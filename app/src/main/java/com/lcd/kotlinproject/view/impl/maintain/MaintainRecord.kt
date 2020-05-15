@@ -5,12 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Message
 import android.view.View
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.data.model.remote.respose.MaintainData
 import com.lcd.kotlinproject.data.model.remote.respose.MaintainRecordData
@@ -21,27 +18,9 @@ import com.lcd.kotlinproject.vm.maintain.MaintainRecordViewModel
 import com.lcd.kotlinproject.vm.maintain.MaintainRecordViewModel.Companion.GET_MAINTAIN_RECORD_ERROR
 import com.lcd.kotlinproject.vm.maintain.MaintainRecordViewModel.Companion.GET_MAINTAIN_RECORD_FAIL
 import com.lcd.kotlinproject.vm.maintain.MaintainRecordViewModel.Companion.GET_MAINTAIN_RECORD_SUCCESS
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener
-import org.jetbrains.anko.AnkoAsyncContext
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.doAsyncResult
-import org.jetbrains.anko.uiThread
-import java.util.concurrent.Future
+import kotlinx.android.synthetic.main.activity_maintain_record.*
 
 class MaintainRecord : ToolbarActivity() {
-    @BindView(R.id.recyclerview)
-    lateinit var recyclerview: RecyclerView
-    @BindView(R.id.textview_no_data)
-    lateinit var textviewNoData: TextView
-    @BindView(R.id.textview_group)
-    lateinit var textviewGroup: TextView
-    @BindView(R.id.textview_name)
-    lateinit var textviewName: TextView
-    @BindView(R.id.smartrefreshlayout)
-    lateinit var smartrefreshlayout: SmartRefreshLayout
-
     private val PAGE_SIZE = 10
     private var mMaintainRecordAdapter: MaintainRecordAdapter = MaintainRecordAdapter(this)
     private var mMaintainRecordViewModel: MaintainRecordViewModel? = null
@@ -63,12 +42,12 @@ class MaintainRecord : ToolbarActivity() {
     private fun initView(){
         mMaintainData = intent.getSerializableExtra("data") as MaintainData?
         mMaintainData?.let {
-            textviewGroup.text = mMaintainData!!.DeviceName
+            textview_group.text = mMaintainData!!.DeviceName
 
             when (mMaintainData!!.EquipmentType) {
-                "0" -> textviewName.setText(R.string.air_compressor)
-                "1" -> textviewName.setText(R.string.booster_pump)
-                "2" -> textviewName.setText(R.string.filter)
+                "0" -> textview_name.setText(R.string.air_compressor)
+                "1" -> textview_name.setText(R.string.booster_pump)
+                "2" -> textview_name.setText(R.string.filter)
                 else -> {}
             }
 
@@ -122,7 +101,7 @@ class MaintainRecord : ToolbarActivity() {
         }
 
         if (mMaintainRecordAdapter.itemCount == 0) {
-            textviewNoData.visibility = View.VISIBLE
+            textview_no_data.visibility = View.VISIBLE
             recyclerview.visibility = View.GONE
         }
     }
@@ -135,13 +114,13 @@ class MaintainRecord : ToolbarActivity() {
         }
 
         if (mMaintainRecordAdapter.itemCount == 0) {
-            textviewNoData.visibility = View.VISIBLE
+            textview_no_data.visibility = View.VISIBLE
             recyclerview.visibility = View.GONE
         }
     }
 
     private fun refreshList(data: MaintainRecordData) {
-        textviewNoData.visibility = View.GONE
+        textview_no_data.visibility = View.GONE
         recyclerview.visibility = View.VISIBLE
 
         val nPage: Int = data.ItemTotalCount ?: 0 / PAGE_SIZE

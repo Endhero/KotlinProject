@@ -5,12 +5,9 @@ import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.data.model.remote.respose.MaintainData
 import com.lcd.kotlinproject.utils.DialogUtil
@@ -22,17 +19,10 @@ import com.lcd.kotlinproject.vm.maintain.MaintainPlanListViewModel.Companion.GET
 import com.lcd.kotlinproject.vm.maintain.MaintainPlanListViewModel.Companion.GET_MAINTAIN_PLAN_SUCCESS
 import com.lcd.kotlinproject.vm.maintain.MaintainPlanListViewModel.Companion.GET_ORGUID_ERROR
 import com.lcd.kotlinproject.vm.maintain.MaintainPlanListViewModel.Companion.GET_ORGUID_FAIL
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.yuwell.androidbase.tool.ProgressDialogUtil
+import kotlinx.android.synthetic.main.fragment_maintain_plan_list.*
 
 class MaintainPlanListFragment : BKFragment(){
-    @BindView(R.id.recyclerview)
-    lateinit var recyclerview: RecyclerView
-    @BindView(R.id.textview_no_data)
-    lateinit var textviewNoData: TextView
-    @BindView(R.id.smartrefreshlayout)
-    lateinit var smartrefreshlayout: SmartRefreshLayout
-
     private var mMaintainPlanListAdapter: MaintainPlanListAdapter? = null
     private var mMaintainPlanListViewModel: MaintainPlanListViewModel? = null
     private val mProgressDialogUtil: ProgressDialogUtil = ProgressDialogUtil(context)
@@ -98,7 +88,7 @@ class MaintainPlanListFragment : BKFragment(){
             smartrefreshlayout.finishRefresh(false)
         }
 
-        textviewNoData.visibility = View.VISIBLE
+        textview_no_data.visibility = View.VISIBLE
         recyclerview.visibility = View.GONE
     }
 
@@ -106,7 +96,7 @@ class MaintainPlanListFragment : BKFragment(){
         if (list.isNotEmpty()) {
             mMaintainPlanListAdapter?.clearData()
             mMaintainPlanListAdapter?.setData(list)
-            textviewNoData.visibility = View.GONE
+            textview_no_data.visibility = View.GONE
             recyclerview.visibility = View.VISIBLE
 
             if (mIsRefresh) {
@@ -117,7 +107,7 @@ class MaintainPlanListFragment : BKFragment(){
                 smartrefreshlayout.finishRefreshWithNoMoreData()
             }
 
-            textviewNoData.visibility = View.VISIBLE
+            textview_no_data.visibility = View.VISIBLE
             recyclerview.visibility = View.GONE
         }
     }

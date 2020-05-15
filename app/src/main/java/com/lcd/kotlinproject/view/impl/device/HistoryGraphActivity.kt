@@ -4,9 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.FrameLayout
 import androidx.lifecycle.ViewModelProviders
-import butterknife.BindView
 import butterknife.ButterKnife
 import com.lcd.kotlinproject.BuildConfig
 import com.lcd.kotlinproject.R
@@ -18,14 +16,10 @@ import com.lcd.kotlinproject.vm.device.DeviceViewModel
 import com.yuwell.androidbase.view.ToolbarActivity
 import com.yuwell.androidbase.web.ArgsBuilder
 import com.yuwell.androidbase.web.WebViewFragment
+import kotlinx.android.synthetic.main.activity_history_graph.*
 import java.util.*
 
 class HistoryGraphActivity : ToolbarActivity() {
-    @BindView(R.id.conditions_select)
-    lateinit var conditionsSelect: ConditionsSelect
-    @BindView(R.id.content)
-    lateinit var content: FrameLayout
-
     private val calendar = Calendar.getInstance()
     private var vm: DeviceViewModel? = null
     private var fragment: WebViewFragment? = null
@@ -39,20 +33,20 @@ class HistoryGraphActivity : ToolbarActivity() {
         vm = ViewModelProviders.of(this)[DeviceViewModel::class.java]
         vm!!.getDeviceLiveData().observe(this, androidx.lifecycle.Observer{ deviceData ->
             if (!deviceData.isNullOrEmpty()) {
-                conditionsSelect.setRightText(deviceData[0]?.name)
+                conditions_select.setRightText(deviceData[0]?.name)
                 deviceId = deviceData[0]?.id
                 loadFragment(savedInstanceState, deviceId, DateUtil.formatYMD(calendar.time))
             }
         })
 
-        conditionsSelect.setLeftText(DateUtil.formatYMD(calendar.time))
-        conditionsSelect.setOnItemClickListener(object : ConditionsSelect.OnItemClickListener{
+        conditions_select.setLeftText(DateUtil.formatYMD(calendar.time))
+        conditions_select.setOnItemClickListener(object : ConditionsSelect.OnItemClickListener{
             override fun onLeftClick() {
                 val dialog = DatePickerDialog(this@HistoryGraphActivity)
                 dialog.init(calendar.time, object : DatePickerDialog.OnDateSetListener{
                     override fun onDateSet(nYear: Int, nMonth: Int, nDay: Int){
                         calendar.set(nYear, nMonth - 1, nDay)
-                        conditionsSelect.setLeftText(DateUtil.formatYMD(calendar.time))
+                        conditions_select.setLeftText(DateUtil.formatYMD(calendar.time))
                         fragment?.wvjbWebView?.loadUrl(BuildConfig.HOST.toString() + "HistoryDataMobile?DeviceID="+ deviceId + "&StartDate=" + DateUtil.formatYMD(calendar.time))
                     }
                 }, null)
@@ -67,7 +61,7 @@ class HistoryGraphActivity : ToolbarActivity() {
                 builder.setSingleChoiceItems(vm!!.getDeviceNameArray(), position) { _, which -> position = which }
                 builder.setTitle(R.string.please_select_device)
                 builder.setPositiveButton(R.string.ensure) { dialog, _ ->
-                    conditionsSelect.setRightText(vm!!.getDeviceNameArray()?.get(position))
+                    conditions_select.setRightText(vm!!.getDeviceNameArray()?.get(position))
                     deviceId = vm!!.getDeviceId(position)
                     fragment?.wvjbWebView?.loadUrl(BuildConfig.HOST.toString() + "HistoryDataMobile?DeviceID=" + deviceId + "&StartDate=" + DateUtil.formatYMD(calendar.time))
                     dialog.dismiss()

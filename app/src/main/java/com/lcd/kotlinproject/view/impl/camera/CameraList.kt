@@ -5,12 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Message
 import android.view.View
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
 import com.ezvizuikit.open.EZUIKit
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.data.model.remote.respose.CameraData
@@ -24,13 +21,9 @@ import com.lcd.kotlinproject.vm.camera.CameraListViewModel.Companion.GET_CAMERA_
 import com.lcd.kotlinproject.vm.camera.CameraListViewModel.Companion.GET_CAMERA_LIST_SUCCESS
 import com.videogo.openapi.EZOpenSDK
 import com.yuwell.androidbase.tool.ResourceUtil
+import kotlinx.android.synthetic.main.activity_camera_list.*
 
 class CameraList : ToolbarActivity() {
-    @BindView(R.id.recyclerview)
-    lateinit var recyclerview: RecyclerView
-    @BindView(R.id.textview_no_data)
-    lateinit var textviewNoData: TextView
-
     private var mCameraListViewModel: CameraListViewModel? = null
     private var mCameraListAdapter: CameraListAdapter = CameraListAdapter(this)
 
@@ -73,11 +66,11 @@ class CameraList : ToolbarActivity() {
                             EZUIKit.setAccessToken(cameralistdata.AccessToken)
                             mCameraListAdapter.setData(cameralistdata.CameraList)
                         } else {
-                            textviewNoData.visibility = View.VISIBLE
+                            textview_no_data.visibility = View.VISIBLE
                         }
                     }
                     GET_CAMERA_LIST_FAIL, GET_CAMERA_LIST_ERROR -> {
-                        textviewNoData.visibility = View.VISIBLE
+                        textview_no_data.visibility = View.VISIBLE
                         DialogUtil.showConfirmDialog(this, R.string.error, message.obj as String)
                     }
                 }

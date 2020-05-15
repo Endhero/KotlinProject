@@ -2,7 +2,6 @@ package com.lcd.kotlinproject.view.impl.device
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
@@ -10,9 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.Guideline
+import android.widget.BaseAdapter
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
@@ -31,49 +29,14 @@ import com.lcd.kotlinproject.view.impl.base.ErrorObserver
 import com.lcd.kotlinproject.view.impl.base.ToolbarActivity
 import com.lcd.kotlinproject.view.widget.SMSCodeInputDialog
 import com.lcd.kotlinproject.vm.device.DeviceViewModel
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.android.synthetic.main.activity_device_status.*
 import java.util.*
 
 /**
  * Created by Chen on 2020/3/13.
  */
 class DeviceStatusActivity : ToolbarActivity() {
-    @BindView(R.id.smartrefreshlayout)
-    lateinit var smartrefreshlayout: SmartRefreshLayout
-    @BindView(R.id.tab)
-    lateinit var mDeviceTab: TabLayout
-    @BindView(R.id.text_online)
-    lateinit var mOnline: TextView
-    @BindView(R.id.text_control)
-    lateinit var mControl: TextView
-    @BindView(R.id.text_standby)
-    lateinit var mStandby: TextView
-    @BindView(R.id.text_running_hour)
-    lateinit var mRunningHour: TextView
-    @BindView(R.id.text_kyj_pressure)
-    lateinit var mKyjPressure: TextView
-    @BindView(R.id.text_oxy_concentration)
-    lateinit var mOxyConcentration: TextView
-    @BindView(R.id.text_zyb_pressure)
-    lateinit var mZybPressure: TextView
-    @BindView(R.id.layout_sketch)
-    lateinit var layoutSketch: ConstraintLayout
-    @BindView(R.id.guide_line_center_horizontal)
-    lateinit var guideLineCenterHorizontal: Guideline
-    @BindView(R.id.label_running_hour_label)
-    lateinit var labelRunningHourLabel: TextView
-    @BindView(R.id.button_switcher)
-    lateinit var buttonSwitcher: Button
-    @BindView(R.id.button_reset)
-    lateinit var buttonReset: Button
-    @BindView(R.id.img_sketch)
-    lateinit var mDeviceSketch: ImageView
-    @BindView(R.id.text_view_more)
-    lateinit var mViewMore: TextView
-    @BindView(R.id.view_flipper)
-    lateinit var mWarningFlipper: AdapterViewFlipper
-
     private var tabUtil: TabUtil? = null
     private var vm: DeviceViewModel? = null
     private var warningAdapter: WarningAdapter? = null
@@ -124,55 +87,55 @@ class DeviceStatusActivity : ToolbarActivity() {
         vm!!.getStatusDataLiveData()
             .observe(this, Observer { data: DeviceStatusData ->
                 val drawable = if (!data.controlState!!) {
-                    mControl.setText(R.string.state_control_false)
+                    text_control.setText(R.string.state_control_false)
                     getDrawable(R.drawable.ic_link)
                 } else {
-                    mControl.setText(R.string.state_control_true)
+                    text_control.setText(R.string.state_control_true)
                     getDrawable(R.drawable.ic_control)
                 }
 
                 drawable!!.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
-                mControl.setCompoundDrawables(drawable, null, null, null)
-                mOnline.isEnabled = (data.onLine)!!
-                mStandby.isEnabled = (data.standbyState)!!
-                mControl.isEnabled = (data.onLine)!!
-                buttonReset.isEnabled = (data.onLine)!!
-                mViewMore.isEnabled = (data.onLine)!!
+                text_control.setCompoundDrawables(drawable, null, null, null)
+                text_online.isEnabled = (data.onLine)!!
+                text_standby.isEnabled = (data.standbyState)!!
+                text_control.isEnabled = (data.onLine)!!
+                button_reset.isEnabled = (data.onLine)!!
+                text_view_more.isEnabled = (data.onLine)!!
 
                 if (data.faultList != null && data.faultList!!.isNotEmpty()) {
                     warningAdapter?.setTextList(data.faultList)
-                    mWarningFlipper.visibility = View.VISIBLE
+                    view_flipper.visibility = View.VISIBLE
                 } else {
-                    mWarningFlipper.visibility = View.GONE
+                    view_flipper.visibility = View.GONE
                 }
 
                 if ((data.onLine)!!) {
-                    mKyjPressure.text = data.airPressure.toString()
-                    mZybPressure.text = data.oxyPressure.toString()
-                    mOxyConcentration.text = data.oxyConcentration.toString()
-                    mRunningHour.text = data.compressorDuration.toString()
+                    text_kyj_pressure.text = data.airPressure.toString()
+                    text_zyb_pressure.text = data.oxyPressure.toString()
+                    text_oxy_concentration.text = data.oxyConcentration.toString()
+                    text_running_hour.text = data.compressorDuration.toString()
 
                     if ((data.oxyState)!!) {
                         if ((data.standbyState)!!) {
-                            mDeviceSketch.setImageResource(R.drawable.ic_device_standby)
+                            img_sketch.setImageResource(R.drawable.ic_device_standby)
                         } else {
                             loadRunningSketch()
                         }
 
-                        buttonSwitcher.isEnabled = true
-                        buttonSwitcher.isSelected = true
+                        button_switcher.isEnabled = true
+                        button_switcher.isSelected = true
                     } else {
-                        mDeviceSketch.setImageResource(R.drawable.ic_device_off)
-                        buttonSwitcher.isEnabled = true
-                        buttonSwitcher.isSelected = false
+                        img_sketch.setImageResource(R.drawable.ic_device_off)
+                        button_switcher.isEnabled = true
+                        button_switcher.isSelected = false
                     }
                 } else {
-                    mKyjPressure.setText(R.string.none)
-                    mZybPressure.setText(R.string.none)
-                    mOxyConcentration.setText(R.string.none)
-                    mRunningHour.setText(R.string.none)
-                    mDeviceSketch.setImageResource(R.drawable.ic_device_off)
-                    buttonSwitcher.isEnabled = false
+                    text_kyj_pressure.setText(R.string.none)
+                    text_zyb_pressure.setText(R.string.none)
+                    text_oxy_concentration.setText(R.string.none)
+                    text_running_hour.setText(R.string.none)
+                    img_sketch.setImageResource(R.drawable.ic_device_off)
+                    button_switcher.isEnabled = false
                 }
 
                 if (mIsRefresh) {
@@ -187,7 +150,7 @@ class DeviceStatusActivity : ToolbarActivity() {
     }
 
     private fun initView() {
-        tabUtil = TabUtil(mDeviceTab)
+        tabUtil = TabUtil(tab)
         tabUtil?.setOnTabChangeListener(object: TabUtil.OnTabChangeListener {
             override fun onTabSelected(tab: TabLayout.Tab){
                 val dd = tab.tag as DeviceData?
@@ -208,9 +171,9 @@ class DeviceStatusActivity : ToolbarActivity() {
             }
         })
         smartrefreshlayout.setEnableLoadMore(false)
-        mWarningFlipper.setInAnimation(this, R.animator.flipper_in)
-        mWarningFlipper.setOutAnimation(this, R.animator.flipper_out)
-        mWarningFlipper.adapter = WarningAdapter(this).also { warningAdapter = it }
+        view_flipper.setInAnimation(this, R.animator.flipper_in)
+        view_flipper.setOutAnimation(this, R.animator.flipper_out)
+        view_flipper.adapter = WarningAdapter(this).also { warningAdapter = it }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -249,7 +212,7 @@ class DeviceStatusActivity : ToolbarActivity() {
         Glide.with(this)
             .load(R.drawable.ic_device_on)
             .placeholder(R.drawable.ic_device_on_loading)
-            .into(mDeviceSketch)
+            .into(img_sketch)
     }
 
     internal class WarningAdapter(private val mContext: Context) : BaseAdapter() {

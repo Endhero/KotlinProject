@@ -5,12 +5,9 @@ import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.data.model.remote.respose.AlarmListData
 import com.lcd.kotlinproject.utils.DialogUtil
@@ -20,17 +17,10 @@ import com.lcd.kotlinproject.vm.alarm.AlarmListViewModel
 import com.lcd.kotlinproject.vm.alarm.AlarmListViewModel.Companion.SEARCH_ALARM_ERROR
 import com.lcd.kotlinproject.vm.alarm.AlarmListViewModel.Companion.SEARCH_ALARM_FAIL
 import com.lcd.kotlinproject.vm.alarm.AlarmListViewModel.Companion.SEARCH_ALARM_SUCCESS
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.yuwell.androidbase.tool.ResourceUtil
+import kotlinx.android.synthetic.main.fragment_alarm_list.*
 
 class AlarmListFragment : BKFragment() {
-    @BindView(R.id.recyclerview)
-    lateinit var recyclerview: RecyclerView
-    @BindView(R.id.textview_no_data)
-    lateinit var textviewNoData: TextView
-    @BindView(R.id.smartrefreshlayout)
-    lateinit var smartrefreshlayout: SmartRefreshLayout
-
     private var mAlarmListViewModel: AlarmListViewModel? = null
     private var mAlarmListAdapter: AlarmListAdapter? = null
     private var mDate: String? = null
@@ -139,7 +129,7 @@ class AlarmListFragment : BKFragment() {
     private fun showNoData() {
         if (mAlarmListAdapter!!.itemCount == 0) {
             mAlarmListAdapter?.clearData()
-            textviewNoData.visibility = View.VISIBLE
+            textview_no_data.visibility = View.VISIBLE
             recyclerview.visibility = View.GONE
         }
     }
@@ -150,7 +140,7 @@ class AlarmListFragment : BKFragment() {
         }
 
         mAlarmListAdapter?.setData(list)
-        textviewNoData.visibility = View.GONE
+        textview_no_data.visibility = View.GONE
         recyclerview.visibility = View.VISIBLE
     }
 }

@@ -3,43 +3,16 @@ package com.lcd.kotlinproject.view.impl.maintain
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.Gravity
 import android.view.View
-import android.widget.ScrollView
-import android.widget.TextView
-import butterknife.BindView
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.data.model.remote.respose.JobListData
 import com.lcd.kotlinproject.view.adapter.widget.PictureAdapter
 import com.lcd.kotlinproject.view.impl.base.ToolbarActivity
-import com.lcd.kotlinproject.view.widget.GridRecycleView
-import org.jetbrains.anko.doAsyncResult
-import java.net.URL
+import kotlinx.android.synthetic.main.activity_job_list_detail.*
 import java.util.*
 
 class JobListDetail : ToolbarActivity() {
-    @BindView(R.id.divider6)
-    lateinit var divider: View
-    @BindView(R.id.textview_image)
-    lateinit var textviewImage: TextView
-    @BindView(R.id.scrollview)
-    lateinit var scrollview: ScrollView
-    @BindView(R.id.textview_group_value)
-    lateinit var textViewGroup: TextView
-    @BindView(R.id.textview_job_list_type_value)
-    lateinit var textViewType: TextView
-    @BindView(R.id.textview_job_list_code_value)
-    lateinit var textViewCode: TextView
-    @BindView(R.id.textview_handler_value)
-    lateinit var textViewHandler: TextView
-    @BindView(R.id.textview_deal_time_value)
-    lateinit var textViewDealTime: TextView
-    @BindView(R.id.textview_job_list_content_value)
-    lateinit var textViewContent: TextView
-    @BindView(R.id.gridrecycleview)
-    lateinit var gridrecycleview: GridRecycleView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,17 +23,17 @@ class JobListDetail : ToolbarActivity() {
         val data = intent.getSerializableExtra("data") as JobListData.Data
 
         data?.let {
-            textViewGroup.text = it.DeviceName
-            textViewType.text = it.OrderType
-            textViewCode.text = it.WorkOrderNum
-            textViewHandler.text = it.Handler
-            textViewDealTime.text = it.DelTime
-            textViewContent.viewTreeObserver?.addOnGlobalLayoutListener {
-                    if (textViewContent.lineCount > 1) {
-                        textViewContent.gravity = Gravity.LEFT
+            textview_group_value.text = it.DeviceName
+            textview_job_list_type_value.text = it.OrderType
+            textview_job_list_code_value.text = it.WorkOrderNum
+            textview_handler_value.text = it.Handler
+            textview_deal_time_value.text = it.DelTime
+            textview_job_list_content_value.viewTreeObserver?.addOnGlobalLayoutListener {
+                    if (textview_job_list_content_value.lineCount > 1) {
+                        textview_job_list_content_value.gravity = Gravity.LEFT
                     }
 
-                    textViewContent.text = it.Content
+                    textview_job_list_content_value.text = it.Content
                 }
 
             if (!it.FilePath.isNullOrBlank() && !it.FileHead.isNullOrBlank()) {
@@ -80,8 +53,8 @@ class JobListDetail : ToolbarActivity() {
                     gridrecycleview.adapter = pictureAdapter
                 }
             } else {
-                textviewImage.visibility = View.GONE
-                divider.visibility = View.GONE
+                textview_image.visibility = View.GONE
+                divider6.visibility = View.GONE
                 gridrecycleview.visibility = View.GONE
             }
         }

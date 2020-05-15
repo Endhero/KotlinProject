@@ -23,12 +23,10 @@ import com.lcd.kotlinproject.view.impl.base.ErrorObserver
 import com.lcd.kotlinproject.view.widget.SpaceItemDecoration
 import com.lcd.kotlinproject.vm.rog.OrgViewModel
 import com.yuwell.androidbase.tool.DensityUtil
+import kotlinx.android.synthetic.main.fragment_contact.*
 import java.util.*
 
 class ContactFragment : BKFragment() {
-    @BindView(R.id.recycler_view)
-    lateinit var recyclerView: RecyclerView
-
     private var mAdapter: ContactAdapter? = null
     private var vm: OrgViewModel? = null
 
@@ -44,8 +42,8 @@ class ContactFragment : BKFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView.addItemDecoration(SpaceItemDecoration(DensityUtil.dip2px(context, 9f), DensityUtil.dip2px(context, 12f)))
-        recyclerView.adapter = ContactAdapter(this).also {mAdapter = it}
+        recycler_view.addItemDecoration(SpaceItemDecoration(DensityUtil.dip2px(context, 9f), DensityUtil.dip2px(context, 12f)))
+        recycler_view.adapter = ContactAdapter(this).also {mAdapter = it}
 
         vm!!.globalErrorLiveData.observe(this, ErrorObserver(context!!))
         vm!!.getUsersMutableLiveData().observe(this, androidx.lifecycle.Observer{ list -> mAdapter?.setUserList(list) })

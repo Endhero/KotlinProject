@@ -2,26 +2,17 @@ package com.lcd.kotlinproject.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import butterknife.BindView
 import butterknife.OnClick
 import com.lcd.base.exception.GlobalError
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.view.impl.base.ErrorObserver
 import com.lcd.kotlinproject.view.impl.base.ToolbarActivity
-import com.lcd.kotlinproject.view.widget.AuthCodeButton
 import com.lcd.kotlinproject.vm.LoginViewModel
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : ToolbarActivity() {
-    @BindView(R.id.edit_phone)
-    lateinit var mPhone: EditText
-    @BindView(R.id.edit_code)
-    lateinit var mCode: EditText
-    @BindView(R.id.button_code)
-    lateinit var mAuthCodeButton: AuthCodeButton
-
     private var vm: LoginViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,9 +21,9 @@ class LoginActivity : ToolbarActivity() {
         vm = ViewModelProviders.of(this)[LoginViewModel::class.java]
         vm!!.getSendCodeRetLiveData().observe(this, Observer { ret ->
             if (ret.success) {
-                mAuthCodeButton.startCountDown()
+                button_code.startCountDown()
             } else {
-                mAuthCodeButton.stopCountDown()
+                button_code.stopCountDown()
             }
         })
 
@@ -62,13 +53,13 @@ class LoginActivity : ToolbarActivity() {
 
     @OnClick(R.id.button_login)
     fun login() {
-        val phone = mPhone.text.toString()
+        val phone = edit_phone.text.toString()
 
         if (!checkPhone(phone)) {
             return
         }
 
-        val code = mCode.text.toString()
+        val code = edit_code.text.toString()
 
         if (!checkCode(code)) {
             return
@@ -80,14 +71,14 @@ class LoginActivity : ToolbarActivity() {
 
     @OnClick(R.id.button_code, R.id.text_get_audio_msg)
     fun onCodeButtonClick(v: View) {
-        val phone = mPhone.text.toString()
+        val phone = edit_phone.text.toString()
 
         if (!checkPhone(phone)) {
             return
         }
 
         if (v.id == R.id.button_code) {
-            mAuthCodeButton.setTextWithLayoutParams(R.string.sending_code)
+            button_code.setTextWithLayoutParams(R.string.sending_code)
         }
 
         vm!!.sendCode(phone, if (v.id == R.id.button_code) 0 else 1)

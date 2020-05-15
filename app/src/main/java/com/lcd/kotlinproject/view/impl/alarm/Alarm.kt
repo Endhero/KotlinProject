@@ -6,15 +6,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Message
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager.widget.ViewPager
-import butterknife.BindView
 import butterknife.OnClick
-import com.google.android.material.tabs.TabLayout
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.data.model.local.DeviceInfo
 import com.lcd.kotlinproject.data.model.remote.respose.NoClearData
@@ -33,19 +29,9 @@ import com.lcd.kotlinproject.vm.alarm.AlarmViewModel.Companion.GET_NOCLEAR_QUANT
 import com.lcd.kotlinproject.vm.alarm.AlarmViewModel.Companion.GET_NOCLEAR_QUANTITY_FAIL
 import com.lcd.kotlinproject.vm.alarm.AlarmViewModel.Companion.GET_NOCLEAR_QUANTITY_SUCCESS
 import com.yuwell.androidbase.tool.ResourceUtil
+import kotlinx.android.synthetic.main.activity_alarm.*
 
 class Alarm : ToolbarActivity() {
-    @BindView(R.id.datepickertextview)
-    lateinit var datepickertextview: DatePickerTextView
-    @BindView(R.id.textview_no_data)
-    lateinit var textviewNoData: TextView
-    @BindView(R.id.textview_device)
-    lateinit var textviewDevice: TextView
-    @BindView(R.id.tablayout)
-    lateinit var tablayout: TabLayout
-    @BindView(R.id.viewpager)
-    lateinit var viewpager: ViewPager
-
     private var mAlarmViewModel: AlarmViewModel? = null
     private var mDateSelected: String = ""
     private var mDeviceInfoSelected: DeviceInfo = DeviceInfo()
@@ -145,7 +131,7 @@ class Alarm : ToolbarActivity() {
         mDateSelected = ""
         mDeviceInfoSelected = DeviceInfo(getString(R.string.all), "")
         datepickertextview.text = getString(R.string.all)
-        textviewDevice.text = getString(R.string.all)
+        textview_device.text = getString(R.string.all)
 
         refreshFragment()
     }
@@ -180,7 +166,7 @@ class Alarm : ToolbarActivity() {
             }
         val negativeClickListener = DialogInterface.OnClickListener { dialog, _-> dialog.dismiss() }
         val positiveClickListener = DialogInterface.OnClickListener { _, _->
-                textviewDevice!!.text = mDeviceInfoSelected.DeviceName
+                textview_device!!.text = mDeviceInfoSelected.DeviceName
                 refreshFragment()
             }
 
@@ -188,7 +174,7 @@ class Alarm : ToolbarActivity() {
     }
 
     private fun showNoData() {
-        textviewNoData.visibility = View.VISIBLE
+        textview_no_data.visibility = View.VISIBLE
         viewpager.visibility = View.GONE
         datepickertextview.isEnabled = false
     }

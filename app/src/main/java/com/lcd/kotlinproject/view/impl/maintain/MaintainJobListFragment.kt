@@ -5,12 +5,9 @@ import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.data.model.remote.respose.JobListData
 import com.lcd.kotlinproject.utils.DialogUtil
@@ -23,17 +20,10 @@ import com.lcd.kotlinproject.vm.maintain.MaintainJobListViewModel.Companion.GET_
 import com.lcd.kotlinproject.vm.maintain.MaintainPlanListViewModel.Companion.GET_ORGUID_ERROR
 import com.lcd.kotlinproject.vm.maintain.MaintainPlanListViewModel.Companion.GET_ORGUID_FAIL
 import com.lcd.kotlinproject.vm.maintain.MaintainPlanListViewModel.Companion.GET_ORGUID_SUCCESS
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.yuwell.androidbase.tool.ProgressDialogUtil
+import kotlinx.android.synthetic.main.fragment_maintain_job_list.*
 
 class MaintainJobListFragment : BKFragment() {
-    @BindView(R.id.recyclerview)
-    lateinit var recyclerview: RecyclerView
-    @BindView(R.id.textview_no_data)
-    lateinit var textviewNoData: TextView
-    @BindView(R.id.smartrefreshlayout)
-    lateinit var smartrefreshlayout: SmartRefreshLayout
-
     private var mMaintainJobListViewModel: MaintainJobListViewModel? = null
     private var mMaintainJobListAdapter: MaintainJobListAdapter? = null
     private var mProgressDialogUtil: ProgressDialogUtil? = null
@@ -124,7 +114,7 @@ class MaintainJobListFragment : BKFragment() {
         }
 
         if (mMaintainJobListAdapter!!.itemCount == 0) {
-            textviewNoData.visibility = View.VISIBLE
+            textview_no_data.visibility = View.VISIBLE
             recyclerview.visibility = View.GONE
         }
     }
@@ -137,13 +127,13 @@ class MaintainJobListFragment : BKFragment() {
         }
 
         if (mMaintainJobListAdapter!!.itemCount == 0) {
-            textviewNoData.visibility = View.VISIBLE
+            textview_no_data.visibility = View.VISIBLE
             recyclerview.visibility = View.GONE
         }
     }
 
     private fun refreshList(data: JobListData) {
-        textviewNoData.visibility = View.GONE
+        textview_no_data.visibility = View.GONE
         recyclerview.visibility = View.VISIBLE
 
         val nPage: Int = data.ItemTotalCount!! / PAGE_SIZE

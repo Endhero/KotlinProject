@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import androidx.lifecycle.ViewModelProviders
-import butterknife.BindView
 import butterknife.ButterKnife
 import cn.jpush.android.api.JPushInterface
 import com.lcd.kotlinproject.R
@@ -25,18 +23,16 @@ import com.lcd.kotlinproject.vm.MainViewModel
 import com.tencent.bugly.beta.Beta
 import com.tencent.bugly.crashreport.CrashReport
 import com.yuwell.androidbase.view.ToolbarActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import q.rorbin.badgeview.Badge
 import q.rorbin.badgeview.QBadgeView
 import java.util.*
 
 class MainActivity : ToolbarActivity() {
-
     // 再点一次退出程序时间设置
     private val WAIT_TIME = 2000L
     private var TOUCH_TIME: Long = 0
 
-    @BindView(R.id.img_warning)
-    lateinit var mWarningIcon: ImageView
 
     private var unreadBadge: Badge? = null
     private var vm: MainViewModel? = null
@@ -57,7 +53,6 @@ class MainActivity : ToolbarActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ButterKnife.bind(this)
 
         vm = ViewModelProviders.of(this).get(MainViewModel::class.java)
         vm!!.getOrgDataLiveData().observe(this, androidx.lifecycle.Observer{ data -> title = data.name })
@@ -146,7 +141,7 @@ class MainActivity : ToolbarActivity() {
                 .setBadgePadding(4f, true)
                 .setShowShadow(false)
                 .setBadgeBackgroundColor(-0x4edee)
-                .bindTarget(mWarningIcon)
+                .bindTarget(img_warning)
         }
 
         unreadBadge!!.badgeNumber = count

@@ -29,7 +29,6 @@ import com.lcd.kotlinproject.utils.DialogUtil
 import com.lcd.kotlinproject.utils.PermissionUtil
 import com.lcd.kotlinproject.utils.PermissionUtil.REQUEST_AUDIO
 import com.lcd.kotlinproject.utils.PermissionUtil.REQUEST_STORAGE
-import com.lcd.kotlinproject.view.widget.VideoView
 import com.lcd.kotlinproject.vm.camera.CameraViewModel
 import com.lcd.kotlinproject.vm.camera.CameraViewModel.Companion.GET_DEVICEINFO_ERROR
 import com.lcd.kotlinproject.vm.camera.CameraViewModel.Companion.GET_DEVICEINFO_SUCCESS
@@ -37,38 +36,18 @@ import com.videogo.openapi.EZConstants.EZTalkbackCapability
 import com.videogo.openapi.bean.EZDeviceInfo
 import com.videogo.util.ConnectionDetector
 import com.videogo.util.Utils
-import com.videogo.widget.CheckTextButton
 import com.videogo.widget.RingView
 import com.yuwell.androidbase.tool.ResourceUtil
 import com.yuwell.androidbase.view.ToolbarActivity
+import kotlinx.android.synthetic.main.activity_camera.*
+import kotlinx.android.synthetic.main.layout_controller.*
+import kotlinx.android.synthetic.main.layout_play_controller.*
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
 
 class Camera : ToolbarActivity() {
-    @BindView(R.id.button_fullscreen)
-    lateinit var checktextbuttonFullScreen: CheckTextButton
-    @BindView(R.id.imagebutton_play)
-    lateinit var imagebuttonPlay: ImageButton
-    @BindView(R.id.imagebutton_voice)
-    lateinit var imagebuttonVoice: ImageButton
-    @BindView(R.id.videoview)
-    lateinit var videoview: VideoView
-    @BindView(R.id.button_quality)
-    lateinit var buttonQuality: Button
-    @BindView(R.id.checkbox_talk)
-    lateinit var checkboxTalk: CheckBox
-    @BindView(R.id.imageview)
-    lateinit var imageview: ImageView
     @BindView(R.id.title)
-    lateinit var linearlayoutTitle: LinearLayout
-    @BindView(R.id.layout_play_control)
-    lateinit var linearlayoutPlayControl: LinearLayout
-    @BindView(R.id.linearlayout_play)
-    lateinit var linearlayoutPlay: LinearLayout
-    @BindView(R.id.linearlayout_function)
-    lateinit var linearlayoutFunction: LinearLayout
-    @BindView(R.id.linearlayout_remote_control)
-    lateinit var linearlayoutRemoteControl: LinearLayout
+    lateinit var title: LinearLayout
 
     private var mIsSoundOpened = true
     private var mCameraData: CameraData? = null
@@ -88,7 +67,7 @@ class Camera : ToolbarActivity() {
         initViewModel()
 
         mCameraViewModel?.bindVideoView(this, videoview)
-        mCameraViewModel?.bindFullScreenBotton(this, checktextbuttonFullScreen)
+        mCameraViewModel?.bindFullScreenBotton(this, button_fullscreen)
         mCameraViewModel?.getDeviceInfo(mCameraData!!.CameraID)
     }
 
@@ -104,8 +83,8 @@ class Camera : ToolbarActivity() {
             textureview.layoutParams = layoutparams
         }
 
-        linearlayoutTitle.bringToFront()
-        linearlayoutPlayControl.bringToFront()
+        title.bringToFront()
+        layout_play_control.bringToFront()
 
         mCameraData = intent.getSerializableExtra("data") as CameraData
 
@@ -137,16 +116,16 @@ class Camera : ToolbarActivity() {
                     mDeviceInfo = message.obj as EZDeviceInfo
 
                     if (mDeviceInfo?.isSupportTalk == EZTalkbackCapability.EZTalkbackNoSupport) {
-                        checkboxTalk.isEnabled = false
+                        checkbox_talk.isEnabled = false
 
                         Toast.makeText(this@Camera, R.string.device_donnot_support_talk, Toast.LENGTH_SHORT).show()
                     } else {
-                        checkboxTalk.isEnabled = true
+                        checkbox_talk.isEnabled = true
                     }
                 }
                 GET_DEVICEINFO_ERROR -> {
                     longToast( message.obj as CharSequence)
-                    checkboxTalk.isEnabled = false
+                    checkbox_talk.isEnabled = false
                 }
             }
         })
@@ -197,26 +176,26 @@ class Camera : ToolbarActivity() {
                 when (videoview.status) {
                     EZUIPlayer.STATUS_PLAY -> {
                         mPlayState = EZUIPlayer.STATUS_STOP
-                        imagebuttonPlay.setImageResource(R.drawable.ic_button_play)
-                        linearlayoutPlay.visibility = View.VISIBLE
+                        imagebutton_play.setImageResource(R.drawable.ic_button_play)
+                        linearlayout_play.visibility = View.VISIBLE
                         videoview.stopPlay()
                     }
 
                     EZUIPlayer.STATUS_STOP -> {
                         mPlayState = EZUIPlayer.STATUS_PLAY
-                        imagebuttonPlay.setImageResource(R.drawable.ic_button_pause)
-                        linearlayoutPlay.visibility = View.GONE
+                        imagebutton_play.setImageResource(R.drawable.ic_button_pause)
+                        linearlayout_play.visibility = View.GONE
                         videoview.startPlay()
                     }
                 }
             R.id.imagebutton_voice ->
                 if (mIsSoundOpened) {
                     mIsSoundOpened = false
-                    imagebuttonVoice.setImageResource(R.drawable.ic_voice_close)
+                    imagebutton_voice.setImageResource(R.drawable.ic_voice_close)
                     videoview.closeSound()
                 } else {
                     mIsSoundOpened = true
-                    imagebuttonVoice.setImageResource(R.drawable.ic_voice)
+                    imagebutton_voice.setImageResource(R.drawable.ic_voice)
                     videoview.openSound()
                 }
             R.id.button_fullscreen ->
@@ -226,18 +205,18 @@ class Camera : ToolbarActivity() {
                 }
             R.id.videoview ->
                 if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    if (linearlayoutTitle.visibility == View.INVISIBLE) {
-                        linearlayoutPlayControl.visibility = View.VISIBLE
-                        linearlayoutTitle.visibility = View.VISIBLE
+                    if (title.visibility == View.INVISIBLE) {
+                        layout_play_control.visibility = View.VISIBLE
+                        title.visibility = View.VISIBLE
                         mHandler?.postDelayed({ 
                             mQualityPopupWindow?.dismiss()
-                            linearlayoutPlayControl.visibility = View.INVISIBLE
-                            linearlayoutTitle.visibility = View.INVISIBLE
+                            layout_play_control.visibility = View.INVISIBLE
+                            title.visibility = View.INVISIBLE
                     }, 5000)
                 } else {
                         mHandler?.removeCallbacksAndMessages(null)
-                        linearlayoutPlayControl.visibility = View.INVISIBLE
-                        linearlayoutTitle.visibility = View.INVISIBLE
+                        layout_play_control.visibility = View.INVISIBLE
+                        title.visibility = View.INVISIBLE
                     }
                 }
             R.id.button_quality -> openQualityPopupWindow(view)
@@ -327,10 +306,10 @@ class Camera : ToolbarActivity() {
     }
 
     private fun setPortraitView() {
-        linearlayoutTitle.visibility = View.VISIBLE
-        linearlayoutPlayControl.visibility = View.VISIBLE
-        linearlayoutRemoteControl.visibility = View.VISIBLE
-        linearlayoutFunction.visibility = View.VISIBLE
+        title.visibility = View.VISIBLE
+        layout_play_control.visibility = View.VISIBLE
+        linearlayout_remote_control.visibility = View.VISIBLE
+        linearlayout_function.visibility = View.VISIBLE
 
         val toolbar = toolbar
         toolbar?.setBackgroundColor(Color.WHITE)
@@ -341,7 +320,7 @@ class Camera : ToolbarActivity() {
 
         var layoutparams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         layoutparams.addRule(RelativeLayout.ALIGN_PARENT_TOP)
-        linearlayoutTitle.layoutParams = layoutparams
+        title.layoutParams = layoutparams
 
         layoutparams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         layoutparams.addRule(RelativeLayout.BELOW, R.id.title)
@@ -350,22 +329,22 @@ class Camera : ToolbarActivity() {
         layoutparams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         layoutparams.addRule(RelativeLayout.BELOW, R.id.videoview)
 
-        linearlayoutPlayControl.layoutParams = layoutparams
-        linearlayoutPlayControl.setBackgroundColor(Color.BLACK)
-        linearlayoutPlayControl.viewTreeObserver?.addOnGlobalLayoutListener {
-                if (checkboxTalk.isChecked && mOrientation == Configuration.ORIENTATION_PORTRAIT) {
-                    mTalkBackPopupWindow?.showAsDropDown(linearlayoutPlayControl)
+        layout_play_control.layoutParams = layoutparams
+        layout_play_control.setBackgroundColor(Color.BLACK)
+        layout_play_control.viewTreeObserver?.addOnGlobalLayoutListener {
+                if (checkbox_talk.isChecked && mOrientation == Configuration.ORIENTATION_PORTRAIT) {
+                    mTalkBackPopupWindow?.showAsDropDown(layout_play_control)
                 }
             }
 
-        buttonQuality.setBackgroundResource(R.drawable.shape_round_rectangle_white_stroke)
+        button_quality.setBackgroundResource(R.drawable.shape_round_rectangle_white_stroke)
     }
 
     private fun setLanscapeView() {
-        linearlayoutTitle.visibility = View.INVISIBLE
-        linearlayoutPlayControl.visibility = View.INVISIBLE
-        linearlayoutRemoteControl.visibility = View.GONE
-        linearlayoutFunction.visibility = View.GONE
+        title.visibility = View.INVISIBLE
+        layout_play_control.visibility = View.INVISIBLE
+        linearlayout_remote_control.visibility = View.GONE
+        linearlayout_function.visibility = View.GONE
         val toolbar = toolbar
         toolbar!!.setBackgroundResource(R.color.black_translucent)
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white)
@@ -382,20 +361,20 @@ class Camera : ToolbarActivity() {
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         layoutparams.addRule(RelativeLayout.ALIGN_TOP, R.id.videoview)
-        linearlayoutTitle.layoutParams = layoutparams
+        title.layoutParams = layoutparams
         layoutparams = RelativeLayout.LayoutParams(
             RelativeLayout.LayoutParams.MATCH_PARENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         layoutparams.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.videoview)
-        linearlayoutPlayControl.layoutParams = layoutparams
-        linearlayoutPlayControl.setBackgroundResource(R.color.black_translucent)
+        layout_play_control.layoutParams = layoutparams
+        layout_play_control.setBackgroundResource(R.color.black_translucent)
         
-        if (checkboxTalk.isChecked) {
+        if (checkbox_talk.isChecked) {
             mTalkBackPopupWindow!!.dismiss()
         }
         
-        buttonQuality.setBackgroundResource(R.drawable.shape_round_rectangle_white_stroke_lanscape)
+        button_quality.setBackgroundResource(R.drawable.shape_round_rectangle_white_stroke_lanscape)
     }
 
     private fun openQualityPopupWindow(view: View) {
@@ -416,14 +395,14 @@ class Camera : ToolbarActivity() {
                         videoview.stopPlay()
                         videoview.setUrl(mCameraData!!.EZurl)
                         videoview.startPlay()
-                        buttonQuality.setText(R.string.quality_flunet)
+                        button_quality.setText(R.string.quality_flunet)
                     }
                     R.id.textview_hd -> {
                         mQuality = 1
                         videoview.stopPlay()
                         videoview.setUrl(mCameraData!!.EZHDurl)
                         videoview.startPlay()
-                        buttonQuality.setText(R.string.quality_hd)
+                        button_quality.setText(R.string.quality_hd)
                     }
                 }
 
@@ -469,7 +448,7 @@ class Camera : ToolbarActivity() {
 
             imagebuttonClose.setOnClickListener {
                 mTalkBackPopupWindow?.dismiss()
-                checkboxTalk.isChecked = false
+                checkbox_talk.isChecked = false
                 videoview.stopTalk()
                 toast(R.string.stop_talk)
             }
@@ -503,7 +482,7 @@ class Camera : ToolbarActivity() {
                 mTalkBackPopupWindow?.animationStyle = R.style.popupwindow
                 mTalkBackPopupWindow?.isFocusable = false
                 mTalkBackPopupWindow?.isOutsideTouchable = false
-                mTalkBackPopupWindow?.showAsDropDown(linearlayoutPlayControl)
+                mTalkBackPopupWindow?.showAsDropDown(layout_play_control)
                 mTalkBackPopupWindow?.update()
 
                 ringview.post {ringview?.setMinRadiusAndDistance(buttonTalkBackControl.height / 2f, Utils.dip2px(this, 22f))}

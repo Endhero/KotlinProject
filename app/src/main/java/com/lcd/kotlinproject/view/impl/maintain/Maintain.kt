@@ -3,24 +3,14 @@ package com.lcd.kotlinproject.view.impl.maintain
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
-import butterknife.BindView
-import com.google.android.material.tabs.TabLayout
 import com.lcd.kotlinproject.R
 import com.lcd.kotlinproject.view.adapter.maintain.MaintainHistoryAdapter
 import com.lcd.kotlinproject.view.impl.base.ToolbarActivity
+import kotlinx.android.synthetic.main.activity_maintain.*
 import java.util.*
 
 class Maintain : ToolbarActivity(){
-    @BindView(R.id.textview_no_data)
-    lateinit var textviewNoData: TextView
-    @BindView(R.id.tablayout)
-    lateinit var tablayout: TabLayout
-    @BindView(R.id.viewpager)
-    lateinit var viewpager: ViewPager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

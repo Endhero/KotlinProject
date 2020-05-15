@@ -5,13 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
-import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import butterknife.BindView
-import butterknife.ButterKnife
 import butterknife.OnClick
 import com.lcd.base.exception.GlobalError
 import com.lcd.kotlinproject.R
@@ -19,23 +15,15 @@ import com.lcd.kotlinproject.data.model.remote.respose.UserData
 import com.lcd.kotlinproject.view.impl.base.ErrorObserver
 import com.lcd.kotlinproject.vm.rog.ContactEditViewModel
 import com.yuwell.androidbase.view.ToolbarActivity
+import kotlinx.android.synthetic.main.activity_contact_edit.*
 import org.jetbrains.anko.longToast
 
 class ContactEditActivity : ToolbarActivity() {
-    @BindView(R.id.edit_name)
-    lateinit var editName: EditText
-    @BindView(R.id.edit_phone)
-    lateinit var editPhone: EditText
-    @BindView(R.id.switch_message)
-    lateinit var switchMessage: SwitchCompat
-
     private var vm: ContactEditViewModel? = null
     private var user: UserData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        ButterKnife.bind(this)
 
         user = intent.getParcelableExtra("user")
 
@@ -56,9 +44,9 @@ class ContactEditActivity : ToolbarActivity() {
         })
 
         user?.let {
-            editName.setText(it.name)
-            editPhone.setText(it.mobile)
-            switchMessage.isChecked = it.isNotificationOn()
+            edit_name.setText(it.name)
+            edit_phone.setText(it.mobile)
+            switch_message.isChecked = it.isNotificationOn()
         }
     }
 
@@ -81,14 +69,14 @@ class ContactEditActivity : ToolbarActivity() {
 
     @OnClick(R.id.button_save)
     fun onClick() {
-        val name = editName.text.toString()
+        val name = edit_name.text.toString()
 
         if (name.isEmpty()) {
             showMessage(R.string.hint_contact)
             return
         }
 
-        val phone = editPhone.text.toString()
+        val phone = edit_phone.text.toString()
 
         if (phone.isEmpty()) {
             showMessage(R.string.hint_phone)
@@ -106,12 +94,12 @@ class ContactEditActivity : ToolbarActivity() {
             user = UserData()
             user.name = name
             user.mobile = phone
-            user.setNotification(switchMessage.isChecked)
+            user.setNotification(switch_message.isChecked)
             vm!!.add(user)
         } else {
             user.name = name
             user.mobile = phone
-            user.setNotification(switchMessage.isChecked)
+            user.setNotification(switch_message.isChecked)
             vm!!.edit(user)
         }
 

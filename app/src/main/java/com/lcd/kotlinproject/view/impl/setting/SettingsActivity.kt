@@ -5,10 +5,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
 import butterknife.OnClick
 import com.lcd.kotlinproject.BuildConfig
 import com.lcd.kotlinproject.R
@@ -16,28 +12,21 @@ import com.lcd.kotlinproject.utils.DialogUtil
 import com.lcd.kotlinproject.view.MainActivity
 import com.tencent.bugly.beta.Beta
 import com.yuwell.androidbase.view.ToolbarActivity
+import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : ToolbarActivity() {
-    @BindView(R.id.text_version)
-    lateinit var textVersion: TextView
-    @BindView(R.id.text_update)
-    lateinit var textUpdate: TextView
-    @BindView(R.id.imageview_point)
-    lateinit var imageview: ImageView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ButterKnife.bind(this)
 
         initView()
     }
 
     private fun initView() {
         Beta.getUpgradeInfo()?.let {
-            imageview.visibility = View.VISIBLE
+            imageview_point.visibility = View.VISIBLE
         }
 
-        textVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
+        text_version.text = getString(R.string.version, BuildConfig.VERSION_NAME)
     }
 
     override fun getLayoutId() = R.layout.activity_settings
