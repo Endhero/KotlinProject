@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="temp_file" path="temp" />
+    <external-cache-path name="external_temp_file" path="temp" />
+    <external-cache-path name="external_cache_path_" path="./" />
+
+    <!--代表外部存储区域的根目录下的文件 Environment.getExternalStorageDirectory()/DCIM/temp目录-->
+    <external-path name="dcim" path="DCIM/temp" />
+
+    <!--代表外部存储区域的根目录下的文件 Environment.getExternalStorageDirectory()/Pictures/temp目录-->
+    <external-path name="pictures" path="Pictures/temp" />
+
+    <!--代表app 私有的存储区域 Context.getFilesDir()目录下的images目录 /data/user/0/com.hm.camerademo/files/images-->
+    <files-path name="files" path="images" />
+
+    <!--代表app 私有的存储区域 Context.getCacheDir()目录下的images目录 /data/user/0/com.hm.camerademo/cache/images-->
+    <cache-path name="cache" path="images" />
+
+    <!--代表app 外部存储区域根目录下的文件 Context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)目录下的Pictures目录-->
+    <external-files-path name="external_files" path="Pictures" />
+
+    <!--代表app 外部存储区域根目录下的文件 Context.getExternalCacheDir目录下的Images目录-->
+    <external-cache-path name="external_cache" path="Images" />
+
+    <!--代表外部存储区域的根目录下的文件 Environment.getExternalStorageDirectory()-->
+    <root-path name="root" path="" />
+</paths>

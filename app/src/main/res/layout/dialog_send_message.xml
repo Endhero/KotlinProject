@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/round_rectangle_padding">
+
+    <ImageView
+        android:id="@+id/imageview_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"
+        android:layout_gravity="right"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_message"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_medium"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_medium_large"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="@string/message_send"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/greyText"
+        android:text="@string/wait_patiently"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_extra_small"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/greyText"
+        android:text="@string/device_will_change"/>
+
+    <Button
+        android:id="@+id/button_i_see"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_round_rectangle_blue"
+        android:stateListAnimator="@null"
+        android:textColor="@android:color/white"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium"
+        android:paddingLeft="@dimen/margin_extra_large"
+        android:paddingRight="@dimen/margin_extra_large"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="@string/i_see"/>
+
+</LinearLayout>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_with_title" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@android:color/white"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabIndicatorHeight="0dp"
+        app:tabSelectedTextColor="@color/normalText"
+        app:tabTextColor="@color/greyText"
+        app:tabMode="scrollable" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartrefreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                android:padding="@dimen/margin_medium"
+                android:background="@drawable/round_rectangle_white_5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_sketch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/text_running_hour"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:paddingTop="@dimen/margin_medium_large"
+                    android:paddingBottom="@dimen/margin_medium"
+                    android:background="#F8F9FB">
+
+                    <TextView
+                        android:enabled="false"
+                        android:id="@+id/text_online"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/text_control"
+                        app:layout_constraintBottom_toBottomOf="@id/text_control"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/text_control"
+                        android:drawableLeft="@drawable/ic_online_1"
+                        android:drawablePadding="2dp"
+                        android:textColor="@drawable/text_color_device_status"
+                        android:textSize="10sp"
+                        android:text="设备在线"/>
+
+                    <TextView
+                        android:enabled="false"
+                        android:id="@+id/text_control"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/text_online"
+                        app:layout_constraintRight_toLeftOf="@id/text_standby"
+                        android:drawableLeft="@drawable/ic_control"
+                        android:drawablePadding="2dp"
+                        android:textColor="@drawable/text_color_device_status"
+                        android:textSize="10sp"
+                        android:text="本机控制"/>
+
+                    <TextView
+                        android:enabled="false"
+                        android:id="@+id/text_standby"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/text_control"
+                        app:layout_constraintBottom_toBottomOf="@id/text_control"
+                        app:layout_constraintLeft_toRightOf="@id/text_control"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:drawableLeft="@drawable/ic_standby"
+                        android:drawablePadding="2dp"
+                        android:textColor="@drawable/text_color_device_status"
+                        android:textSize="10sp"
+                        android:text="自动待机"/>
+
+                    <AdapterViewFlipper
+                        android:id="@+id/view_flipper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="@id/text_online"
+                        app:layout_constraintRight_toRightOf="@id/text_control"
+                        app:layout_constraintTop_toBottomOf="@id/text_online"
+                        app:layout_constraintBottom_toTopOf="@id/img_sketch"
+                        android:flipInterval="3000"
+                        android:autoStart="true"
+                        android:loopViews="true"/>
+
+                    <ImageView
+                        android:id="@+id/img_sketch"
+                        android:layout_width="0dp"
+                        android:layout_height="86dp"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintTop_toBottomOf="@id/text_control"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_device_off"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_line_center_horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="193dp" />
+
+                <TextView
+                    android:id="@+id/text_running_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_sketch"
+                    app:layout_constraintRight_toLeftOf="@id/guide_line_center_horizontal"
+                    app:layout_constraintHorizontal_bias="0.25"
+                    android:textSize="28sp"
+                    android:text="--"/>
+
+                <TextView
+                    android:id="@+id/label_running_hour_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/text_running_hour"
+                    app:layout_constraintTop_toBottomOf="@id/text_running_hour"
+                    app:layout_constraintBottom_toTopOf="@id/text_oxy_concentration"
+                    android:textSize="11sp"
+                    android:textColor="@color/tipText"
+                    android:text="运行时长(h)"/>
+
+                <TextView
+                    android:id="@+id/text_kyj_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/guide_line_center_horizontal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/text_running_hour"
+                    app:layout_constraintHorizontal_bias="0.25"
+                    android:textSize="28sp"
+                    android:text="--"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/text_kyj_pressure"
+                    app:layout_constraintTop_toBottomOf="@id/text_kyj_pressure"
+                    android:textSize="11sp"
+                    android:textColor="@color/tipText"
+                    android:text="@string/pressure_kyj"/>
+
+                <TextView
+                    android:id="@+id/text_oxy_concentration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    app:layout_constraintLeft_toLeftOf="@id/text_running_hour"
+                    app:layout_constraintTop_toBottomOf="@id/label_running_hour_label"
+                    app:layout_constraintBottom_toTopOf="@id/label_oxy_concentration"
+                    android:textSize="28sp"
+                    android:text="--"/>
+
+                <TextView
+                    android:id="@+id/label_oxy_concentration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/text_oxy_concentration"
+                    app:layout_constraintTop_toBottomOf="@id/text_oxy_concentration"
+                    android:textSize="11sp"
+                    android:textColor="@color/tipText"
+                    android:text="@string/oxygen_concentration"/>
+
+                <TextView
+                    android:id="@+id/text_zyb_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/guide_line_center_horizontal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/text_oxy_concentration"
+                    app:layout_constraintHorizontal_bias="0.25"
+                    android:textSize="28sp"
+                    android:text="--"/>
+
+                <TextView
+                    android:id="@+id/label_zyb_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/text_zyb_pressure"
+                    app:layout_constraintTop_toBottomOf="@id/text_zyb_pressure"
+                    android:textSize="11sp"
+                    android:textColor="@color/tipText"
+                    android:text="@string/pressure_oxy"/>
+
+                <TextView
+                    android:id="@+id/text_view_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/label_zyb_pressure"
+                    app:layout_constraintBottom_toTopOf="@id/button_switcher"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textColor="@drawable/text_color_view_more"
+                    android:textSize="12sp"
+                    android:text="查看更多实时数据"/>
+
+                <Button
+                    android:enabled="false"
+                    android:id="@+id/button_switcher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_more"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/guide_line_center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@drawable/button_on_off"/>
+
+                <Button
+                    android:id="@+id/button_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/button_switcher"
+                    app:layout_constraintBottom_toBottomOf="@id/button_switcher"
+                    app:layout_constraintLeft_toRightOf="@id/guide_line_center_horizontal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:background="@drawable/button_reset" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

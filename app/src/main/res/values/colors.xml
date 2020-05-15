@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#609EE9</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#609EE9</color>
+    <color name="contentBackground">#F0F0F0</color>
+    <color name="normalText">#333333</color>
+    <color name="tipText">#999999</color>
+    <color name="divider">#ebebeb</color>
+    <color name="greyText">#666666</color>
+    <color name="blue">#1975DD</color>
+    <color name="textDisabled">#B3B3B3</color>
+    <color name="black_translucent">#7A000000</color>
+    <color name="serious">#FB1212</color>
+    <color name="common">#BED067</color>
+    <color name="maintain_background">#FAFAFA</color>
+</resources>

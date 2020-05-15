@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_medium"
+    style="@style/round_rectangle_padding">
+
+    <ImageView
+        android:id="@+id/imageview_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/textview_group"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textview_group"/>
+
+    <TextView
+        android:id="@+id/textview_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/imageview_type"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/textview_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textview_group"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/textview_maintain_time_remain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/textview_group"
+        app:layout_constraintTop_toBottomOf="@id/textview_group"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:textColor="@color/greyText"
+        android:text="@string/maintain_time_remain_format"/>
+
+    <TextView
+        android:id="@+id/textview_maintain_time_remain_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textview_maintain_time_remain"
+        app:layout_constraintTop_toBottomOf="@id/textview_group"
+        app:layout_constraintBaseline_toBaselineOf="@id/textview_maintain_time_remain"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:textSize="16sp"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toRightOf="@id/imageview_type"
+        app:layout_constraintTop_toBottomOf="@id/textview_maintain_time_remain"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/divider"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_medium_large"
+        style="@style/round_rectangle_padding_gray"/>
+
+    <TextView
+        android:id="@+id/textview_last_maintain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/textview_maintain_time_remain"
+        app:layout_constraintTop_toBottomOf="@id/textview_maintain_time_remain"
+        android:layout_marginTop="@dimen/margin_large"
+        android:textColor="@color/greyText"
+        android:text="@string/last_maintain"/>
+
+    <TextView
+        android:id="@+id/textview_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/textview_last_maintain"
+        app:layout_constraintTop_toBottomOf="@id/textview_last_maintain"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/margin_medium_small"
+        android:textColor="@color/tipText"/>
+
+    <TextView
+        android:id="@+id/textview_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/textview_last_maintain"
+        app:layout_constraintTop_toBottomOf="@id/textview_time"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/margin_medium_small"
+        android:textColor="@color/tipText"/>
+
+    <TextView
+        android:id="@+id/textview_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/textview_last_maintain"
+        app:layout_constraintTop_toBottomOf="@id/textview_type"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/margin_medium_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/margin_medium_small"
+        android:textColor="@color/tipText"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        app:layout_constraintTop_toBottomOf="@id/textview_content"
+        android:layout_marginTop="@dimen/margin_extra_large"
+        android:layerType="software"
+        android:background="@drawable/dotted_line"/>
+
+    <TextView
+        android:id="@+id/textview_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:text="@string/maintain_record_button"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

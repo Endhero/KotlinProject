@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_with_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium_small"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:background="@drawable/round_rectangle_white_5dp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_about"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:paddingStart="@dimen/margin_medium_small"
+            android:paddingEnd="@dimen/margin_medium_small">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:drawableStart="@drawable/ic_about"
+                android:drawablePadding="2dp"
+                android:gravity="center_vertical"
+                android:text="关于我们"/>
+
+            <TextView
+                android:id="@+id/text_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/img_about_next"
+                android:layout_marginRight="@dimen/margin_extra_small"
+                android:textColor="@color/tipText"
+                tools:text="版本1.0.0"/>
+
+            <ImageView
+                android:id="@+id/img_about_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_next"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/margin_medium_small"
+            android:layout_marginRight="@dimen/margin_medium_small"
+            android:background="@color/divider"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_update"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:paddingStart="@dimen/margin_medium_small"
+            android:paddingEnd="@dimen/margin_medium_small">
+
+            <TextView
+                android:id="@+id/text_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:drawableStart="@drawable/ic_update"
+                android:drawablePadding="2dp"
+                android:gravity="center_vertical"
+                android:text="版本升级"/>
+
+            <ImageView
+                android:id="@+id/imageview_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_circle_red"
+                app:layout_constraintTop_toTopOf="@id/text_update"
+                app:layout_constraintLeft_toRightOf="@id/text_update"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/img_update_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_next"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium"
+        android:gravity="center"
+        android:textColor="#FB1212"
+        android:text="退出登录"
+        android:textSize="15sp"
+        android:background="@drawable/round_rectangle_white_5dp"/>
+
+</LinearLayout>

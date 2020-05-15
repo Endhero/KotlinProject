@@ -1,0 +1,72 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.61'
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions: $kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://mirrors.huaweicloud.com/repository/maven/"}
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    // Sdk and tools
+    minSdkVersion = 21
+    targetSdkVersion = 28
+    compileSdkVersion = 29
+    buildToolsVersion = "28.0.3"
+
+    versionCode = 1
+    versionName = "1.0.0"
+
+    // App dependencies
+    appCompatVer = '1.1.0-rc01'
+    constraintLayoutVer = '1.1.3'
+    navVer = '2.1.0'
+    lifeCycleExtVer = '2.1.0'
+    butterknifeVer = '10.2.1'
+    fastjsonVersion = '1.1.71.android'
+    retrofitVersion = '2.6.2'
+    rxjava2Version = '2.2.14'
+    rxandroid2Version = '2.1.1'
+    okhttpLogging = '3.6.0'
+    glideVersion = '4.10.0'
+    permissionsdispatcherVersion = '4.6.0'
+    pagingVersion = '2.1.0'
+    eventbusVersion = '3.1.1'
+    workVersion = '2.2.0'
+    smartRefreshLayoutVersion = '1.1.0'
+    coreVer = '20b47aa923'
+    jpushVer = '3.3.9'
+    jpushCore = '2.1.6'
+    buglyVer = '1.4.2'
+    ezuikitver = '2.2'
+    ezvizsdkver = '4.9.0.6'
+    recyclerviewver = '1.1.0'
+    niceimageviewver = '1.0.5'
+}

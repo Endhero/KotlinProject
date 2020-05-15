@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativelayout"
+    android:background="@android:color/white">
+
+    <include layout="@layout/toolbar_with_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/title"/>
+
+    <com.lcd.kotlinproject.view.widget.VideoView
+        android:id="@+id/videoview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:layout_below="@id/title"/>
+
+    <include layout="@layout/layout_play_controller"
+        android:id="@+id/layout_play_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/videoview"/>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/videoview"
+        android:layout_alignEnd="@id/videoview"
+        android:layout_alignTop="@id/videoview"
+        android:layout_alignBottom="@id/videoview"
+        android:background="@android:color/black"
+        android:src="@drawable/ic_play_unpressed"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button_play"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_play"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_function"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_medium"
+        android:layout_below="@id/layout_play_control"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkbox_talk"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/selector_talk"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@null"
+            android:textSize="12sp"
+            android:textColor="@color/tipText"
+            android:button="@null"
+            android:enabled="false"
+            android:text="@string/talk"/>
+
+        <Button
+            android:id="@+id/button_capture"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/selector_capture"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/tipText"
+            android:background="@null"
+            android:textSize="12sp"
+            android:text="@string/capture"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_remote_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearlayout_function"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_controller"
+            android:id="@+id/layout_controller"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/textview_control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/tipText"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:text="@string/remote_control"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

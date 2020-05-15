@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popwindow"
+    android:orientation="vertical"
+    android:gravity="center" >
+
+    <TextView
+        android:id="@+id/textview_hd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:text="@string/quality_hd"
+        android:visibility="gone"
+        android:textColor="@drawable/selector_quality_color"
+        android:background="@null" />
+    
+    <TextView
+        android:id="@+id/textview_flunet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:text="@string/quality_flunet"
+        android:visibility="gone"
+        android:textColor="@drawable/selector_quality_color"
+        android:background="@null" />
+</LinearLayout>

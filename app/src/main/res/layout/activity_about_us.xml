@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/contentBackground">
+
+    <include layout="@layout/toolbar_with_title"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_about_us"
+        android:drawablePadding="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_extra_large"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/app_name"/>
+
+    <TextView
+        android:id="@+id/textview_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/tipText"
+        android:layout_marginTop="@dimen/margin_large"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium_large"
+        android:paddingLeft="@dimen/margin_medium"
+        android:paddingRight="@dimen/margin_medium"
+        android:orientation="vertical"
+        style="@style/round_rectangle_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/normal_text_size"
+                android:text="@string/customer_service_phone"/>
+
+            <TextView
+                android:id="@+id/textview_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/normal_text_size"
+                android:text="@string/customer_service_phone_number"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/copyright"
+            android:textColor="@color/blue"
+            android:textSize="14sp"
+            android:layout_marginBottom="@dimen/margin_small"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/copyright_rseerved"
+            android:textSize="14sp"
+            android:layout_marginBottom="@dimen/margin_medium_small"/>
+
+    </LinearLayout>
+
+</LinearLayout>

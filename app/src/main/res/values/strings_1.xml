@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="realtime_data">实时数据</string>
+    <string name="oxygen_concentration">氧气浓度(%)</string>
+    <string name="pressure_kyj">空压机压力(kgf)</string>
+    <string name="pressure_zyb">增压泵入口压力(kgf)</string>
+    <string name="pressure_oxy">氧气储罐压力(kgf)</string>
+    <string name="oxy_production_vol">产氧量(Nm³/h)</string>
+    <string name="oxy_usage">用氧量(Nm³)</string>
+    <string name="kyj_duration">空压机时长(h)</string>
+    <string name="zyb_duration">增压泵时长(h)</string>
+    <string name="none">--</string>
+    <string name="contact">联系人</string>
+    <string name="hint_contact">请输入联系人姓名</string>
+    <string name="phone">手机号</string>
+    <string name="hint_phone">请输入联系人手机号</string>
+    <string name="save">保存</string>
+    <string name="edit_contact">编辑联系人</string>
+    <string name="add_contact">新增联系人</string>
+    <string name="delete_contact_confirm">是否确定删除该联系人</string>
+    <string name="state_ok">正常</string>
+    <string name="state_error">故障</string>
+    <string name="state_pressed">按下</string>
+    <string name="state_on">开</string>
+    <string name="state_off">关</string>
+    <string name="state_alert_on">响</string>
+    <string name="state_alert_off">不响</string>
+    <string name="state_auto">自动</string>
+    <string name="state_manual">手动</string>
+    <string name="state_standby_true">自动待机</string>
+    <string name="state_standby_false">压力未到</string>
+    <string name="state_control_true">本机控制</string>
+    <string name="state_control_false">双机联动</string>
+    <string name="state_reset_true">已复位</string>
+    <string name="state_reset_false">无</string>
+    <string name="committing">数据提交中&#8230;</string>
+    <string name="loading">数据加载中&#8230;</string>
+    <string name="press_again_exit">再按一次退出</string>
+    <string name="settings">设置</string>
+    <string name="version">版本号 %s</string>
+</resources>

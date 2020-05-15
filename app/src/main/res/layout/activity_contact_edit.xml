@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_with_title" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
+        android:paddingLeft="@dimen/margin_medium"
+        android:paddingRight="@dimen/margin_medium"
+        android:background="@drawable/round_rectangle_white_5dp">
+
+        <TextView
+            android:id="@+id/label_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/greyText"
+            android:textSize="13dp"
+            android:text="@string/contact"/>
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/label_message"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/label_contact"
+            app:layout_constraintBottom_toBottomOf="@id/label_contact"
+            android:background="@null"
+            android:hint="@string/hint_contact"
+            android:textColorHint="@color/tipText"
+            android:textSize="14sp"
+            android:maxLength="50"
+            tools:text="李华"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_contact"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/label_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_height"
+            app:layout_constraintTop_toBottomOf="@id/label_contact"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/greyText"
+            android:textSize="13dp"
+            android:text="@string/phone"/>
+
+        <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/label_message"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/label_phone"
+            app:layout_constraintBottom_toBottomOf="@id/label_phone"
+            android:inputType="phone"
+            android:background="@null"
+            android:hint="@string/hint_phone"
+            android:textColorHint="@color/tipText"
+            android:textSize="14sp"
+            android:maxLength="11"
+            tools:text="13333333333"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_phone"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/label_message"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_height"
+            app:layout_constraintTop_toBottomOf="@id/label_phone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/greyText"
+            android:textSize="13dp"
+            android:text="开启短信通知"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/label_message"
+            app:layout_constraintBottom_toBottomOf="@id/label_message"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="@dimen/margin_extra_large"
+        android:layout_marginEnd="@dimen/margin_extra_large"
+        style="@style/round_rectangle_button"
+        android:text="@string/save"/>
+</LinearLayout>

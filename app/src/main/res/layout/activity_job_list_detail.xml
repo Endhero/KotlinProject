@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/toolbar_with_title"
+        android:id="@+id/title"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="@dimen/margin_medium">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                style="@style/round_rectangle_padding">
+
+                <TextView
+                    android:id="@+id/textview_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@color/tipText"
+                    android:text="@string/group"/>
+
+                <TextView
+                    android:id="@+id/textview_group_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/textview_group"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="parent"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:textSize="16sp"
+                    android:gravity="right"/>
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:background="@color/divider"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintRight_toRightOf="@id/textview_group_value"
+                    app:layout_constraintTop_toBottomOf="@id/textview_group_value"
+                    android:layout_marginTop="@dimen/margin_medium"/>
+
+                <TextView
+                    android:id="@+id/textview_job_list_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintTop_toBottomOf="@id/divider1"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:textColor="@color/tipText"
+                    android:text="@string/job_list_type"/>
+
+                <TextView
+                    android:id="@+id/textview_job_list_type_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/textview_job_list_type"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@id/textview_job_list_type"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:textSize="16sp"
+                    android:gravity="right"/>
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:background="@color/divider"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintRight_toRightOf="@id/textview_job_list_type_value"
+                    app:layout_constraintTop_toBottomOf="@id/textview_job_list_type_value"
+                    android:layout_marginTop="@dimen/margin_medium"/>
+
+                <TextView
+                    android:id="@+id/textview_job_list_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintTop_toBottomOf="@id/divider2"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:textColor="@color/tipText"
+                    android:text="@string/job_list_code"/>
+
+                <TextView
+                    android:id="@+id/textview_job_list_code_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/textview_job_list_code"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@id/textview_job_list_code"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:textSize="16sp"
+                    android:gravity="right"/>
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:background="@color/divider"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintRight_toRightOf="@id/textview_job_list_code_value"
+                    app:layout_constraintTop_toBottomOf="@id/textview_job_list_code_value"
+                    android:layout_marginTop="@dimen/margin_medium"/>
+
+                <TextView
+                    android:id="@+id/textview_handler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintTop_toBottomOf="@id/divider3"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:textColor="@color/tipText"
+                    android:text="@string/handler"/>
+
+                <TextView
+                    android:id="@+id/textview_handler_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/textview_handler"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@id/textview_handler"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:textSize="16sp"
+                    android:gravity="right"/>
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:background="@color/divider"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintRight_toRightOf="@id/textview_handler_value"
+                    app:layout_constraintTop_toBottomOf="@id/textview_handler_value"
+                    android:layout_marginTop="@dimen/margin_medium"/>
+
+                <TextView
+                    android:id="@+id/textview_deal_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintTop_toBottomOf="@id/divider4"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:textColor="@color/tipText"
+                    android:text="@string/handle_time"/>
+
+                <TextView
+                    android:id="@+id/textview_deal_time_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/textview_deal_time"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@id/textview_deal_time"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:textSize="16sp"
+                    android:gravity="right"/>
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:background="@color/divider"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintRight_toRightOf="@id/textview_deal_time_value"
+                    app:layout_constraintTop_toBottomOf="@id/textview_deal_time_value"
+                    android:layout_marginTop="@dimen/margin_medium"/>
+
+                <TextView
+                    android:id="@+id/textview_job_list_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintTop_toTopOf="@id/textview_job_list_content_value"
+                    app:layout_constraintBottom_toBottomOf="@id/textview_job_list_content_value"
+                    android:textColor="@color/tipText"
+                    android:text="@string/job_list_content"/>
+
+                <TextView
+                    android:id="@+id/textview_job_list_content_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/textview_job_list_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider5"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:textSize="16sp"
+                    android:gravity="right"/>
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:background="@color/divider"
+                    app:layout_constraintLeft_toLeftOf="@id/textview_group"
+                    app:layout_constraintRight_toRightOf="@id/textview_job_list_content_value"
+                    app:layout_constraintTop_toBottomOf="@id/textview_job_list_content_value"
+                    android:layout_marginTop="@dimen/margin_medium"/>
+
+                <TextView
+                    android:id="@+id/textview_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider6"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:textColor="@color/tipText"
+                    android:text="@string/image"/>
+
+                <com.lcd.kotlinproject.view.widget.GridRecycleView
+                    android:id="@+id/gridrecycleview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/textview_image"
+                    android:layout_marginTop="@dimen/margin_medium"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

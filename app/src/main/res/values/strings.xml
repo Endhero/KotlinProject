@@ -1,0 +1,174 @@
+<resources>
+    <string name="app_name">鱼跃智氧Kotlin</string>
+
+    <!--MainActivity-->
+    <string name="not_yet_open">暂未开放该功能</string>
+
+    <!--login-->
+    <string name="login">登　录</string>
+    <string name="input_mobile">请输入手机号码</string>
+    <string name="input_code">请输入验证码</string>
+    <string name="no_code_message">收不到验证码?</string>
+    <string name="get_audio_code">获取语音验证码</string>
+    <string name="get_auth_code">获取验证码</string>
+    <string name="send_auth_code">立即发送</string>
+    <string name="sending_code">发送中</string>
+    <string name="input_valid_phone">手机号格式不正确</string>
+    <string name="logining">正在登录&#8230;</string>
+
+    <string name="device_running">设备运行</string>
+    <string name="video_monitor">视频监控</string>
+    <string name="warning_info">告警信息</string>
+    <string name="history_data">历史数据</string>
+    <string name="device_maintaince">设备维护</string>
+    <string name="org_info">单位信息</string>
+
+    <!--CameraList-->
+    <string name="device_online">设备在线</string>
+    <string name="device_offline">设备离线</string>
+    <string name="monitor">视频监控</string>
+    <string name="load_error">很抱歉,加载失败了~</string>
+    <string name="unkonwn_device">未知设备</string>
+    <string name="get_camera_list_fail_format">获取监控设备信息失败:%s</string>
+    <string name="get_camera_list_error_format">获取监控设备信息出错:%s</string>
+    <string name="no_camera">无视频监控</string>
+
+    <!--Camera-->
+    <string name="capture">截图</string>
+    <string name="talk">对讲</string>
+    <string name="remote_control">云台控制</string>
+    <string name="captrue_cannot_found">无法保存截图</string>
+    <string name="captrue_fail">截图失败</string>
+    <string name="captrue_success">截图成功</string>
+    <string name="captrue_success_format">截图成功，图片保存在:%s.可在相册中查看.</string>
+    <string name="start_talk">正在发起对讲</string>
+    <string name="stop_talk">对讲结束</string>
+    <string name="talking">对讲中...</string>
+    <string name="device_donnot_support_talk">设备不支持对讲功能</string>
+    <string name="device_donnot_support_remote_control">设备不支持云台控制</string>
+    <string name="quality_hd">高清</string>
+    <string name="quality_flunet">流畅</string>
+    <string name="press_to_talk_release_to_listen">按住说话\n松开收听</string>
+    <string name="get_device_info_error">获取设备信息失败,无法使用对讲及云台控制功能</string>
+    <string name="get_device_info_error_format">获取设备信息失败,无法使用对讲及云台控制功能:%s</string>
+    <string name="play_video_fail_format">视频播放失败(%s)</string>
+
+    <!--DeviceStatusActivity-->
+    <string name="message_send">指令已发送</string>
+    <string name="wait_patiently">请耐心等待</string>
+    <string name="device_will_change">设备状态将在3分钟内发生改变</string>
+    <string name="i_see">我知道了</string>
+
+    <!--Alarm-->
+    <string name="clear_alarm_format">已消除(%s)</string>
+    <string name="no_clear_alarm_format">未消除(%s)</string>
+    <string name="clear_alarm">已消除</string>
+    <string name="no_clear_alarm">未消除</string>
+    <string name="alarm">告警信息</string>
+    <string name="please_select_date">请选择日期</string>
+    <string name="please_select_device">请选择机组</string>
+    <string name="alarm_time">告警时间:</string>
+    <string name="deal_time">消除时间:</string>
+    <string name="get_device_list_fail_format">获取设备信息失败:%s</string>
+    <string name="get_device_list_error_format">获取设备信息出错:%s</string>
+    <string name="no_device">该账号下没有设备</string>
+    <string name="no_alarm">暂无告警</string>
+
+    <!--AlarmListFragment-->
+    <string name="search_alarm_fail_format">告警信息检索失败:%s</string>
+    <string name="search_alarm_error_format">告警信息检索出错:%s</string>
+    <string name="serious">严重</string>
+    <string name="common">一般</string>
+
+    <!--Maintain-->
+    <string name="device_maintain">设备维护</string>
+    <string name="maintain_plan">保养计划</string>
+    <string name="maintain_job_list">维护工单</string>
+    <string name="no_data">暂无数据</string>
+
+    <!--MaintainPlanFragment-->
+    <string name="maintain_time_remain_format">剩余保养时长:&#8195;</string>
+    <string name="time_remain_format">%s小时</string>
+    <string name="last_maintain">最近一次保养:</string>
+    <string name="time_format">时间:&#8195;%s</string>
+    <string name="type_format">类型:&#8195;%s</string>
+    <string name="content_format">内容:&#8195;%s</string>
+    <string name="air_compressor">空压机</string>
+    <string name="booster_pump">增压泵</string>
+    <string name="filter">过滤器</string>
+    <string name="get_orguid_fail_format">获取保养计划编号失败:%s</string>
+    <string name="get_orguid_error_format">获取保养计划编号出错:%s</string>
+    <string name="get_maintain_plan_fail_format">获取保养计划失败:%s</string>
+    <string name="get_maintain_plan_error_format">获取保养计划出错:%s</string>
+    <string name="no_mainitain_plan">暂无保养计划</string>
+
+    <!--MaintainRecord-->
+    <string name="maintain_record_button">保养记录></string>
+    <string name="maintain_record">保养记录</string>
+    <string name="maintain_running_time_format">保养时的运行时间:&#8195;%s小时</string>
+    <string name="maintain_time_format">保养时长:&#8195;%s小时</string>
+    <string name="maintain_content_format">保养内容:&#8195;%s</string>
+    <string name="get_maintain_record_fail_format">获取保养记录失败:%s</string>
+    <string name="get_maintain_record_error_format">获取保养记录出错:%s</string>
+
+    <!--MaintainJobListFragment-->
+    <string name="deal_time_format">处理时间:&#8195;%s</string>
+    <string name="job_list_content_format">工单内容:&#8195;%s</string>
+    <string name="manual_maintenance">人工维修</string>
+    <string name="get_maintain_job_list_fail_format">获取维护工单失败:%s</string>
+    <string name="get_maintain_job_list_error_format">获取维护工单出错:%s</string>
+    <string name="no_maintain_job_list">暂无维护工单</string>
+
+    <!--JobListDetail-->
+    <string name="job_list_detail">工单详情</string>
+    <string name="group">机组</string>
+    <string name="job_list_type">工单类型</string>
+    <string name="job_list_code">工单编号</string>
+    <string name="handler">处理人</string>
+    <string name="handle_time">处理时间</string>
+    <string name="job_list_content">工单内容</string>
+    <string name="image">图片</string>
+
+    <!--Message-->
+    <string name="message">通知</string>
+    <string name="maintain_message">保养通知</string>
+    <string name="alarm_message">告警通知</string>
+    <string name="clear_message">清除通知</string>
+
+    <!--AboutUS-->
+    <string name="about_us">关于我们</string>
+    <string name="customer_service_phone">客服电话</string>
+    <string name="customer_service_phone_number">400-828-7768</string>
+    <string name="copyright">鱼跃公司&#8194;版权所有</string>
+    <string name="copyright_rseerved">Copyright © 2020 Yuwell.All Rights Reserved</string>
+
+    <!--Setting-->
+    <string name="log_out">确定退出登录？</string>
+
+    <!--Common-->
+    <string name="tip">提示</string>
+    <string name="ensure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="all">全部</string>
+    <string name="back">返回</string>
+    <string name="need_permission">需要权限</string>
+    <string name="apply_for_storage_permission">该功能需要使用您的存储权限,点击"确定"进行授权.</string>
+    <string name="apply_for_audio_permission">该功能需要使用您的录音权限,点击"确定"进行授权.</string>
+    <string name="net_inavailable">网络不可用</string>
+    <string name="please_wait">请稍等...</string>
+    <string name="error">错误</string>
+    <string name="unknown_error">未知类型错误</string>
+    <string name="unknown_fail">未知类型异常</string>
+    <string name="server_error_format">服务器访问出错(%s)</string>
+    <string name="server_fail">服务器返回失败</string>
+    <string name="reponse_error">服务器报文解析出错</string>
+    <string name="net_error">无法连接到服务器,请检查您的网络</string>
+    <string name="internal_error">app内部错误</string>
+    <string name="server_respose_time_out_error">服务器响应超时</string>
+    <string name="server_request_time_out_error">服务器请求超时</string>
+    <string name="socket_error">服务器连接异常</string>
+    <string name="unknown_ezsdk_error">未知视频播放组件错误</string>
+    <string name="video_control_error_format">视频控制功能初始化出错:%s</string>
+    <string name="none_">— —</string>
+
+</resources>

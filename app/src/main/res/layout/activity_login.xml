@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/margin_medium_large"
+    android:paddingRight="@dimen/margin_medium_large"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_login" />
+
+    <ImageView
+        android:id="@+id/img_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_mobile"
+        app:layout_constraintTop_toTopOf="@id/edit_phone"
+        app:layout_constraintBottom_toBottomOf="@id/edit_phone"
+        app:layout_constraintRight_toLeftOf="@id/edit_phone"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/img_logo"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/img_phone"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:background="@null"
+        android:textColorHint="@color/tipText"
+        android:hint="@string/input_mobile"
+        android:maxLength="11"
+        android:inputType="phone"
+        android:textSize="@dimen/normal_text_size"
+        android:textColor="@color/normalText"
+        tools:text="13333335555"/>
+
+    <View
+        android:id="@+id/divider_h_phone"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/edit_phone"
+        app:layout_constraintBottom_toTopOf="@id/button_code"
+        app:layout_constraintLeft_toLeftOf="@id/edit_phone"
+        app:layout_constraintRight_toRightOf="@id/edit_phone"
+        android:layout_marginTop="@dimen/margin_medium_large" />
+
+
+    <ImageView
+        android:id="@+id/img_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_veritify"
+        app:layout_constraintTop_toTopOf="@id/edit_code"
+        app:layout_constraintBottom_toBottomOf="@id/edit_code"
+        app:layout_constraintRight_toLeftOf="@id/edit_code"
+        app:layout_constraintLeft_toLeftOf="@id/img_phone" />
+
+
+    <EditText
+        android:id="@+id/edit_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/button_code"
+        app:layout_constraintBottom_toBottomOf="@id/button_code"
+        app:layout_constraintRight_toLeftOf="@id/button_code"
+        app:layout_constraintLeft_toRightOf="@id/img_code"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:background="@null"
+        android:textColorHint="@color/tipText"
+        android:hint="@string/input_code"
+        android:maxLength="6"
+        android:inputType="number"
+        android:textSize="@dimen/normal_text_size"
+        android:textColor="@color/normalText"
+        tools:text="002223"/>
+
+    <com.lcd.kotlinproject.view.widget.AuthCodeButton
+        android:id="@+id/button_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/divider_h_phone"
+        app:layout_constraintRight_toRightOf="@id/edit_phone"
+        android:layout_marginTop="@dimen/margin_large"
+        android:background="@drawable/bg_auth_code"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textColor="@color/tipText"
+        android:textSize="12sp"
+        android:text="@string/get_auth_code"/>
+
+    <View
+        android:id="@+id/divider_h_code"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/edit_code"
+        app:layout_constraintLeft_toLeftOf="@id/edit_code"
+        app:layout_constraintRight_toRightOf="@id/button_code"
+        android:layout_marginTop="@dimen/margin_medium_large"/>
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/divider_h_code"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="60dp"
+        android:text="@string/login"
+        style="@style/round_rectangle_button"/>
+
+    <TextView
+        android:id="@+id/text_no_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        app:layout_constraintTop_toBottomOf="@id/button_login"
+        app:layout_constraintRight_toLeftOf="@id/divider_audio"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:textColor="@color/greyText"
+        android:text="@string/no_code_message" />
+
+    <View
+        android:id="@+id/divider_audio"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintTop_toTopOf="@id/text_no_message"
+        app:layout_constraintBottom_toBottomOf="@id/text_no_message"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/divider"/>
+
+    <TextView
+        android:id="@+id/text_get_audio_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/divider_audio"
+        app:layout_constraintTop_toTopOf="@id/text_no_message"
+        app:layout_constraintBottom_toBottomOf="@id/text_no_message"
+        android:layout_marginStart="@dimen/margin_small"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/get_audio_code"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <include layout="@layout/toolbar_with_title" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@android:color/white"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabIndicatorHeight="0dp"
+        app:tabSelectedTextColor="@color/normalText"
+        app:tabTextColor="@color/greyText"
+        app:tabMode="scrollable" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingRight="@dimen/margin_medium"
+                android:paddingTop="@dimen/margin_medium_large"
+                android:paddingBottom="@dimen/margin_extra_small"
+                android:background="@drawable/round_rectangle_white_5dp">
+
+                <TextView
+                    android:id="@+id/label_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="@dimen/normal_text_size"
+                    android:textStyle="bold"
+                    android:text="监控数据"/>
+
+                <TextView
+                    android:id="@+id/text_update_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_data"
+                    app:layout_constraintBottom_toBottomOf="@id/label_data"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textSize="12sp"
+                    android:textColor="@color/tipText"
+                    tools:text="2020-3-16 9:22"/>
+                
+                <TextView
+                    android:id="@+id/label_oxy_concentration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_data"
+                    app:layout_constraintLeft_toLeftOf="@id/label_data"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="@string/oxygen_concentration"/>
+
+                <TextView
+                    android:id="@+id/text_oxy_concentration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_update_time"
+                    app:layout_constraintTop_toTopOf="@id/label_oxy_concentration"
+                    app:layout_constraintBottom_toBottomOf="@id/label_oxy_concentration"
+                    android:layout_marginRight="12dp"
+                    tools:text="94.4"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_concentration"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_concentration"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_concentration" />
+
+                <TextView
+                    android:id="@+id/label_kyj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_concentration"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_concentration"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:text="@string/pressure_kyj"/>
+
+                <TextView
+                    android:id="@+id/text_kyj_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_kyj"
+                    app:layout_constraintBottom_toBottomOf="@id/label_kyj"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_concentration"
+                    tools:text="94.4"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_kyj"
+                    app:layout_constraintLeft_toLeftOf="@id/label_kyj"
+                    app:layout_constraintRight_toRightOf="@id/text_kyj_pressure" />
+
+                <TextView
+                    android:id="@+id/label_zyb_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintLeft_toLeftOf="@id/label_kyj"
+                    app:layout_constraintTop_toBottomOf="@id/label_kyj"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:text="@string/pressure_zyb"/>
+
+                <TextView
+                    android:id="@+id/text_zyb_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_zyb_pressure"
+                    app:layout_constraintBottom_toBottomOf="@id/label_zyb_pressure"
+                    app:layout_constraintRight_toRightOf="@id/text_kyj_pressure"
+                    tools:text="94.4"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_zyb_pressure"
+                    app:layout_constraintLeft_toLeftOf="@id/label_zyb_pressure"
+                    app:layout_constraintRight_toRightOf="@id/text_zyb_pressure" />
+
+                <TextView
+                    android:id="@+id/label_oxy_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintLeft_toLeftOf="@id/label_zyb_pressure"
+                    app:layout_constraintTop_toBottomOf="@id/label_zyb_pressure"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:text="@string/pressure_oxy"/>
+
+                <TextView
+                    android:id="@+id/text_oxy_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_oxy_pressure"
+                    app:layout_constraintBottom_toBottomOf="@id/label_oxy_pressure"
+                    app:layout_constraintRight_toRightOf="@id/text_zyb_pressure"
+                    tools:text="94.4"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_pressure"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_pressure"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_pressure" />
+
+                <TextView
+                    android:id="@+id/label_oxy_production"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_pressure"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_pressure"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:text="@string/oxy_production_vol"/>
+
+                <TextView
+                    android:id="@+id/text_oxy_production"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_oxy_production"
+                    app:layout_constraintBottom_toBottomOf="@id/label_oxy_production"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_pressure"
+                    tools:text="94.4"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_production"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_production"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_production" />
+
+                <TextView
+                    android:id="@+id/label_oxy_usage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_production"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_production"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:text="@string/oxy_usage"/>
+
+                <TextView
+                    android:id="@+id/text_oxy_usage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_oxy_usage"
+                    app:layout_constraintBottom_toBottomOf="@id/label_oxy_usage"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_production"
+                    tools:text="94.4"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_usage"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_usage"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_usage" />
+
+                <TextView
+                    android:id="@+id/label_kyj_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_usage"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_usage"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:text="@string/kyj_duration"/>
+
+                <TextView
+                    android:id="@+id/text_kyj_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_kyj_duration"
+                    app:layout_constraintBottom_toBottomOf="@id/label_kyj_duration"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_usage"
+                    tools:text="94.4"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_kyj_duration"
+                    app:layout_constraintLeft_toLeftOf="@id/label_kyj_duration"
+                    app:layout_constraintRight_toRightOf="@id/text_kyj_duration" />
+
+                <TextView
+                    android:id="@+id/label_zyb_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintLeft_toLeftOf="@id/label_kyj_duration"
+                    app:layout_constraintTop_toBottomOf="@id/label_kyj_duration"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:text="@string/zyb_duration"/>
+
+                <TextView
+                    android:id="@+id/text_zyb_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_zyb_duration"
+                    app:layout_constraintBottom_toBottomOf="@id/label_zyb_duration"
+                    app:layout_constraintRight_toRightOf="@id/text_kyj_duration"
+                    tools:text="94.4"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingRight="@dimen/margin_medium"
+                android:paddingTop="@dimen/margin_medium_large"
+                android:paddingBottom="@dimen/margin_extra_small"
+                android:background="@drawable/round_rectangle_white_5dp">
+
+                <TextView
+                    android:id="@+id/label_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="@dimen/normal_text_size"
+                    android:textStyle="bold"
+                    android:text="监控状态"/>
+
+                <TextView
+                    android:id="@+id/text_status_update_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/label_status"
+                    app:layout_constraintBottom_toBottomOf="@id/label_status"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textSize="12sp"
+                    android:textColor="@color/tipText"
+                    tools:text="2020-3-16 9:22"/>
+
+                <TextView
+                    android:id="@+id/label_kyj_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_status"
+                    app:layout_constraintLeft_toLeftOf="@id/label_status"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="空压机"/>
+
+                <TextView
+                    android:id="@+id/text_kyj_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_status_update_time"
+                    app:layout_constraintTop_toTopOf="@id/label_kyj_status"
+                    app:layout_constraintBottom_toBottomOf="@id/label_kyj_status"
+                    android:layout_marginRight="12dp"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_kyj_status"
+                    app:layout_constraintLeft_toLeftOf="@id/label_kyj_status"
+                    app:layout_constraintRight_toRightOf="@id/text_kyj_status" />
+
+                <TextView
+                    android:id="@+id/label_zyb_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_kyj_status"
+                    app:layout_constraintLeft_toLeftOf="@id/label_kyj_status"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="增压泵"/>
+
+                <TextView
+                    android:id="@+id/text_zyb_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_kyj_status"
+                    app:layout_constraintTop_toTopOf="@id/label_zyb_status"
+                    app:layout_constraintBottom_toBottomOf="@id/label_zyb_status"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_zyb_status"
+                    app:layout_constraintLeft_toLeftOf="@id/label_zyb_status"
+                    app:layout_constraintRight_toRightOf="@id/text_zyb_status" />
+
+                <TextView
+                    android:id="@+id/label_emergency_stop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_zyb_status"
+                    app:layout_constraintLeft_toLeftOf="@id/label_zyb_status"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="紧急停止按钮"/>
+
+                <TextView
+                    android:id="@+id/text_emergency_stop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_zyb_status"
+                    app:layout_constraintTop_toTopOf="@id/label_emergency_stop"
+                    app:layout_constraintBottom_toBottomOf="@id/label_emergency_stop"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_emergency_stop"
+                    app:layout_constraintLeft_toLeftOf="@id/label_emergency_stop"
+                    app:layout_constraintRight_toRightOf="@id/text_emergency_stop" />
+
+                <TextView
+                    android:id="@+id/label_kyj_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_emergency_stop"
+                    app:layout_constraintLeft_toLeftOf="@id/label_emergency_stop"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="空压机"/>
+
+                <TextView
+                    android:id="@+id/text_kyj_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_emergency_stop"
+                    app:layout_constraintTop_toTopOf="@id/label_kyj_switch"
+                    app:layout_constraintBottom_toBottomOf="@id/label_kyj_switch"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_kyj_switch"
+                    app:layout_constraintLeft_toLeftOf="@id/label_kyj_switch"
+                    app:layout_constraintRight_toRightOf="@id/text_kyj_switch" />
+
+                <TextView
+                    android:id="@+id/label_zyb_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_kyj_switch"
+                    app:layout_constraintLeft_toLeftOf="@id/label_kyj_switch"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="增压泵"/>
+
+                <TextView
+                    android:id="@+id/text_zyb_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_kyj_switch"
+                    app:layout_constraintTop_toTopOf="@id/label_zyb_switch"
+                    app:layout_constraintBottom_toBottomOf="@id/label_zyb_switch"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_zyb_switch"
+                    app:layout_constraintLeft_toLeftOf="@id/label_zyb_switch"
+                    app:layout_constraintRight_toRightOf="@id/text_zyb_switch" />
+
+                <TextView
+                    android:id="@+id/label_alert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_zyb_switch"
+                    app:layout_constraintLeft_toLeftOf="@id/label_zyb_switch"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="报警器"/>
+
+                <TextView
+                    android:id="@+id/text_alert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_zyb_switch"
+                    app:layout_constraintTop_toTopOf="@id/label_alert"
+                    app:layout_constraintBottom_toBottomOf="@id/label_alert"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_alert"
+                    app:layout_constraintLeft_toLeftOf="@id/label_alert"
+                    app:layout_constraintRight_toRightOf="@id/text_alert" />
+
+                <TextView
+                    android:id="@+id/label_main_oxy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_alert"
+                    app:layout_constraintLeft_toLeftOf="@id/label_alert"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="制氧主机"/>
+
+                <TextView
+                    android:id="@+id/text_main_oxy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_alert"
+                    app:layout_constraintTop_toTopOf="@id/label_main_oxy"
+                    app:layout_constraintBottom_toBottomOf="@id/label_main_oxy"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_main_oxy"
+                    app:layout_constraintLeft_toLeftOf="@id/label_main_oxy"
+                    app:layout_constraintRight_toRightOf="@id/text_main_oxy" />
+
+                <TextView
+                    android:id="@+id/label_oxy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_main_oxy"
+                    app:layout_constraintLeft_toLeftOf="@id/label_main_oxy"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="制氧机"/>
+
+                <TextView
+                    android:id="@+id/text_oxy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_main_oxy"
+                    app:layout_constraintTop_toTopOf="@id/label_oxy"
+                    app:layout_constraintBottom_toBottomOf="@id/label_oxy"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy" />
+
+                <TextView
+                    android:id="@+id/label_oxy_generate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="制氧"/>
+
+                <TextView
+                    android:id="@+id/text_oxy_generate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy"
+                    app:layout_constraintTop_toTopOf="@id/label_oxy_generate"
+                    app:layout_constraintBottom_toBottomOf="@id/label_oxy_generate"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_generate"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_generate"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_generate" />
+
+                <TextView
+                    android:id="@+id/label_oxy_standby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_generate"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_generate"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="制氧机"/>
+
+                <TextView
+                    android:id="@+id/text_oxy_standby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy"
+                    app:layout_constraintTop_toTopOf="@id/label_oxy_standby"
+                    app:layout_constraintBottom_toBottomOf="@id/label_oxy_standby"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_standby"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_standby"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_standby" />
+
+                <TextView
+                    android:id="@+id/label_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_oxy_standby"
+                    app:layout_constraintLeft_toLeftOf="@id/label_oxy_standby"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="复位"/>
+
+                <TextView
+                    android:id="@+id/text_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_oxy_standby"
+                    app:layout_constraintTop_toTopOf="@id/label_reset"
+                    app:layout_constraintBottom_toBottomOf="@id/label_reset"
+                    tools:text="正常"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/label_reset"
+                    app:layout_constraintLeft_toLeftOf="@id/label_reset"
+                    app:layout_constraintRight_toRightOf="@id/text_reset" />
+
+                <TextView
+                    android:id="@+id/label_oxy_control"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height"
+                    app:layout_constraintTop_toBottomOf="@id/label_reset"
+                    app:layout_constraintLeft_toLeftOf="@id/label_reset"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/tipText"
+                    android:textSize="14sp"
+                    android:text="制氧机"/>
+
+                <TextView
+                    android:id="@+id/text_oxy_control"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@id/text_reset"
+                    app:layout_constraintTop_toTopOf="@id/label_oxy_control"
+                    app:layout_constraintBottom_toBottomOf="@id/label_oxy_control"
+                    tools:text="正常"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

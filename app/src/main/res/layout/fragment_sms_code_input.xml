@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/button_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/ic_close_24dp"
+        android:background="@null" />
+
+    <TextView
+        android:id="@+id/label_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/button_close"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="16sp"
+        android:text="请填写手机短信验证码"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_line_center_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <TextView
+        android:id="@+id/text_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/button_code"
+        app:layout_constraintBottom_toBottomOf="@id/button_code"
+        app:layout_constraintRight_toLeftOf="@id/guide_line_center_horizontal"
+        android:textColor="@color/tipText"
+        android:text="13333333333"/>
+
+    <com.lcd.kotlinproject.view.widget.AuthCodeButton
+        android:id="@+id/button_code"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        app:layout_constraintTop_toBottomOf="@id/label_tip"
+        app:layout_constraintLeft_toRightOf="@id/guide_line_center_horizontal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        android:background="@drawable/bg_message_open"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:text="@string/send_auth_code"/>
+
+    <EditText
+        android:id="@+id/edit_code_0"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="@dimen/margin_medium_large"
+        app:layout_constraintTop_toBottomOf="@id/button_code"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/edit_code_1"
+        android:nextFocusDown="@id/edit_code_1"
+        android:focusableInTouchMode="true"
+        style="@style/edit_code_input" />
+
+    <EditText
+        android:id="@+id/edit_code_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        app:layout_constraintTop_toTopOf="@id/edit_code_0"
+        app:layout_constraintBottom_toBottomOf="@id/edit_code_0"
+        app:layout_constraintLeft_toRightOf="@id/edit_code_0"
+        app:layout_constraintRight_toLeftOf="@id/edit_code_2"
+        android:nextFocusUp="@id/edit_code_0"
+        android:nextFocusDown="@id/edit_code_2"
+        style="@style/edit_code_input" />
+
+    <EditText
+        android:id="@+id/edit_code_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        app:layout_constraintTop_toTopOf="@id/edit_code_1"
+        app:layout_constraintBottom_toBottomOf="@id/edit_code_1"
+        app:layout_constraintLeft_toRightOf="@id/edit_code_1"
+        app:layout_constraintRight_toLeftOf="@id/edit_code_3"
+        android:nextFocusUp="@id/edit_code_1"
+        android:nextFocusDown="@id/edit_code_3"
+        style="@style/edit_code_input" />
+
+    <EditText
+        android:id="@+id/edit_code_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        app:layout_constraintTop_toTopOf="@id/edit_code_2"
+        app:layout_constraintBottom_toBottomOf="@id/edit_code_2"
+        app:layout_constraintLeft_toRightOf="@id/edit_code_2"
+        app:layout_constraintRight_toLeftOf="@id/edit_code_4"
+        android:nextFocusUp="@id/edit_code_2"
+        android:nextFocusDown="@id/edit_code_4"
+        style="@style/edit_code_input" />
+
+    <EditText
+        android:id="@+id/edit_code_4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium_large"
+        app:layout_constraintTop_toTopOf="@id/edit_code_3"
+        app:layout_constraintBottom_toBottomOf="@id/edit_code_3"
+        app:layout_constraintLeft_toRightOf="@id/edit_code_3"
+        app:layout_constraintRight_toRightOf="parent"
+        android:nextFocusUp="@id/edit_code_3"
+        android:imeOptions="actionDone"
+        style="@style/edit_code_input" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

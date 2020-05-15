@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">base</string>
+
+    <string name="error_1">服务器返回异常</string>
+    <string name="error_2">无法连接到服务器</string>
+    <string name="error_3">未知错误</string>
+    <string name="error_4">>服务器返回错误</string>
+</resources>
